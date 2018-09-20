@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<package>
+	<metadata>
+		<id>RL.Color</id>
+		<version>0.1.0</version>
+		<title>RL.Color</title>
+		<authors>Ringo Leese</authors>
+		<owners>Ringo Leese</owners>
+		<licenseUrl>https://github.com/ringostarr80/RL.Color/blob/master/LICENSE</licenseUrl>
+		<projectUrl>https://github.com/ringostarr80/RL.Color</projectUrl>
+		<defaultPushSource>https://www.nuget.org/api/v2/package</defaultPushSource>
+		<requireLicenseAcceptance>false</requireLicenseAcceptance>
+		<description>This is a replacement class for the System.Drawing.Color-structure</description>
+		<releaseNotes>Initial Release.</releaseNotes>
+		<copyright>Copyright 2018</copyright>
+		<tags>color manipulation</tags>
+	</metadata>
+	<files>
+		<file src="..\LICENSE" target="LICENSE"/>
+		<file src="bin\Release\netstandard2.0\Color.dll" target="lib\netstandard2.0"/>
+		<file src="bin\Release\netstandard2.0\Color.xml" target="lib\netstandard2.0"/>
+	</files>
+</package>
