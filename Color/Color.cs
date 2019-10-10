@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Text.RegularExpressions;
 
 namespace RL
@@ -187,6 +188,7 @@ namespace RL
 		private byte _red = 0;
 		private byte _green = 0;
 		private byte _blue = 0;
+		private string _originalString = string.Empty;
 
         /// <summary>
         /// Alpha
@@ -208,6 +210,11 @@ namespace RL
         /// </summary>
         /// <value>The blue value of this Color-instance.</value>
 		public byte B { get { return this._blue; } set { this._blue = value; } }
+		/// <summary>
+		/// Original String
+		/// </summary>
+		/// <value>The orginal string, that was given by the new-constructor.</value>
+		public string OriginalString { get { return this._originalString; } }
         /// <summary>
         /// Cyan
         /// </summary>
@@ -1100,6 +1107,7 @@ namespace RL
 				this._red = color.R;
 				this._green = color.G;
 				this._blue = color.B;
+				this._originalString = stringColor;
 				return;
 			}
 
@@ -1108,6 +1116,7 @@ namespace RL
 				this._red = color.R;
 				this._green = color.G;
 				this._blue = color.B;
+				this._originalString = stringColor;
 				return;
 			}
 
@@ -1116,6 +1125,7 @@ namespace RL
 				this._red = color.R;
 				this._green = color.G;
 				this._blue = color.B;
+				this._originalString = stringColor;
 				return;
 			}
 
@@ -1124,6 +1134,7 @@ namespace RL
 				this._red = color.R;
 				this._green = color.G;
 				this._blue = color.B;
+				this._originalString = stringColor;
 				return;
 			}
 
@@ -1133,6 +1144,7 @@ namespace RL
 					this._red = color.R;
 					this._green = color.G;
 					this._blue = color.B;
+					this._originalString = stringColor;
 					return;
 				}
 			}
@@ -1143,6 +1155,7 @@ namespace RL
 					this._red = color.R;
 					this._green = color.G;
 					this._blue = color.B;
+					this._originalString = stringColor;
 					return;
 				}
 			}
@@ -1367,7 +1380,7 @@ namespace RL
 		/// <returns>string</returns>
 		public string ToRGBAString()
 		{
-			return string.Format("rgba({0}, {1}, {2}, {3:0.##})", this.R, this.G, this.B, (double)this.A / 255.0);
+			return string.Format(CultureInfo.InvariantCulture, "rgba({0}, {1}, {2}, {3:0.##})", this.R, this.G, this.B, (double)this.A / 255.0);
 		}
 
 		/// <summary>
@@ -1415,12 +1428,12 @@ namespace RL
 
 			var alpha = 255;
 			if (colorHexMatch.Groups[1].Value != string.Empty) {
-                alpha = short.Parse(colorHexMatch.Groups[1].Value, System.Globalization.NumberStyles.HexNumber);
+                alpha = short.Parse(colorHexMatch.Groups[1].Value, NumberStyles.HexNumber);
 			}
             
-			var red = short.Parse(colorHexMatch.Groups[2].Value, System.Globalization.NumberStyles.HexNumber);
-			var green = short.Parse(colorHexMatch.Groups[3].Value, System.Globalization.NumberStyles.HexNumber);
-			var blue = short.Parse(colorHexMatch.Groups[4].Value, System.Globalization.NumberStyles.HexNumber);
+			var red = short.Parse(colorHexMatch.Groups[2].Value, NumberStyles.HexNumber);
+			var green = short.Parse(colorHexMatch.Groups[3].Value, NumberStyles.HexNumber);
+			var blue = short.Parse(colorHexMatch.Groups[4].Value, NumberStyles.HexNumber);
 			var colorFromArgb = System.Drawing.Color.FromArgb(alpha, red, green, blue);
 			if (color == null) {
 				color = new Color();
@@ -1440,9 +1453,9 @@ namespace RL
 				return false;
 			}
 
-			var red = short.Parse(colorRgbMatch.Groups[1].Value, System.Globalization.NumberStyles.Integer);
-			var green = short.Parse(colorRgbMatch.Groups[2].Value, System.Globalization.NumberStyles.Integer);
-			var blue = short.Parse(colorRgbMatch.Groups[3].Value, System.Globalization.NumberStyles.Integer);
+			var red = short.Parse(colorRgbMatch.Groups[1].Value, CultureInfo.InvariantCulture);
+			var green = short.Parse(colorRgbMatch.Groups[2].Value, CultureInfo.InvariantCulture);
+			var blue = short.Parse(colorRgbMatch.Groups[3].Value, CultureInfo.InvariantCulture);
 			var colorFromArgb = System.Drawing.Color.FromArgb(red, green, blue);
 			if (color == null) {
 				color = new Color();
@@ -1461,10 +1474,10 @@ namespace RL
 				return false;
 			}
 
-			var red = short.Parse(colorRgbaMatch.Groups[1].Value, System.Globalization.NumberStyles.Integer);
-			var green = short.Parse(colorRgbaMatch.Groups[2].Value, System.Globalization.NumberStyles.Integer);
-			var blue = short.Parse(colorRgbaMatch.Groups[3].Value, System.Globalization.NumberStyles.Integer);
-			var alpha = double.Parse(colorRgbaMatch.Groups[4].Value, System.Globalization.NumberStyles.Float);
+			var red = short.Parse(colorRgbaMatch.Groups[1].Value, CultureInfo.InvariantCulture);
+			var green = short.Parse(colorRgbaMatch.Groups[2].Value, CultureInfo.InvariantCulture);
+			var blue = short.Parse(colorRgbaMatch.Groups[3].Value, CultureInfo.InvariantCulture);
+			var alpha = double.Parse(colorRgbaMatch.Groups[4].Value, CultureInfo.InvariantCulture);
 			var colorFromArgb = System.Drawing.Color.FromArgb((int)Math.Floor(alpha * 255), red, green, blue);
 			if (color == null) {
 				color = new Color();
@@ -1484,10 +1497,10 @@ namespace RL
 				return false;
 			}
 
-			var cyan = double.Parse(colorCmykMatch.Groups[1].Value, System.Globalization.NumberStyles.Integer);
-			var magenta = double.Parse(colorCmykMatch.Groups[3].Value, System.Globalization.NumberStyles.Integer);
-			var yellow = double.Parse(colorCmykMatch.Groups[5].Value, System.Globalization.NumberStyles.Integer);
-			var black = double.Parse(colorCmykMatch.Groups[7].Value, System.Globalization.NumberStyles.Float);
+			var cyan = double.Parse(colorCmykMatch.Groups[1].Value, CultureInfo.InvariantCulture);
+			var magenta = double.Parse(colorCmykMatch.Groups[3].Value, CultureInfo.InvariantCulture);
+			var yellow = double.Parse(colorCmykMatch.Groups[5].Value, CultureInfo.InvariantCulture);
+			var black = double.Parse(colorCmykMatch.Groups[7].Value, NumberStyles.Float);
 
 			var red = (int)Math.Round(255.0 * (1.0 - cyan / 100.0) * (1.0 - black / 100.0));
 			var green = (int)Math.Round(255.0 * (1.0 - magenta / 100.0) * (1.0 - black / 100.0));
@@ -1513,6 +1526,7 @@ namespace RL
 			this._red = 0;
 			this._green = 0;
 			this._blue = 0;
+			this._originalString = string.Empty;
 		}
 
 		private void GetHSLValue(out double h, out double s, out double l) {

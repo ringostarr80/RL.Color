@@ -315,5 +315,14 @@ namespace ColorNUnitTests
 			var subtractedColor = redColor - greenColor;
 			Assert.AreEqual("#7F0000", subtractedColor.ToHEXString());
 		}
+
+        [Test]
+        public void TestColorOriginalString()
+        {
+            var redColor = new Color("red");
+            var greenColor = new Color("#800000");
+            Assert.AreEqual("red", redColor.OriginalString);
+            Assert.AreEqual("#800000", greenColor.OriginalString);
+        }
 	}
 }

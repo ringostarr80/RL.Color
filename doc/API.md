@@ -30,6 +30,7 @@
   * [get M(): double](#m)
   * [get Y(): double](#y)
   * [get K(): double](#k)
+  * [get OriginalString(): string](#original_string)
 
 <a name="constructors"></a>
 
@@ -364,3 +365,14 @@ Console.WriteLine("K value: " + cmykColor.K);
 ```
 
 > K value: 10  
+
+<a name="original_string"></a>
+
+### get OriginalString(): string
+
+```csharp
+var cmykColor = new RL.Color("cmyk(0%, 0%, 0%, 10%)");
+Console.WriteLine("OriginalString: " + cmykColor.OriginalString);
+```
+
+> OriginalString: cmyk(0%, 0%, 0%, 10%)  
