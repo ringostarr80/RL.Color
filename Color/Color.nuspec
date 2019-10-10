@@ -6,7 +6,7 @@
 		<title>RL.Color</title>
 		<authors>Ringo Leese</authors>
 		<owners>Ringo Leese</owners>
-		<licenseUrl>https://github.com/ringostarr80/RL.Color/blob/master/LICENSE</licenseUrl>
+		<license type="expression">CC0-1.0</license>
 		<projectUrl>https://github.com/ringostarr80/RL.Color</projectUrl>
 		<defaultPushSource>https://www.nuget.org/api/v2/package</defaultPushSource>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -14,6 +14,9 @@
 		<releaseNotes>Initial Release.</releaseNotes>
 		<copyright>Copyright 2018</copyright>
 		<tags>color manipulation</tags>
+		<dependencies>
+			<group targetFramework=".NETStandard2.0"/>
+		</dependencies>
 	</metadata>
 	<files>
 		<file src="..\LICENSE" target="LICENSE"/>
