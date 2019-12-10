@@ -14,6 +14,8 @@
   * [Colorize(RL.Color color): RL.Color](#colorize_color)
   * [Colorize(string color): RL.Color](#colorize_string)
   * [Grayscale(): RL.Color](#grayscale)
+  * [Interpolate(RL.Color color, double interpolation): RL.Color](#interpolate)
+  * [InterpolateHSV(RL.Color color, double interpolation): RL.Color](#interpolate_hsv)
   * [Invert(): RL.Color](#invert)
   * [InvertLuminescence(): RL.Color](#invert_luminescence)
   * [Reset(): void](#reset)
@@ -191,6 +193,32 @@ Console.WriteLine("grayscaled color hex-string: " + grayscaledColor.ToHEXString(
 ```
 
 > grayscaled color hex-string: #2D2D2D  
+
+<a name="interpolate"></a>
+
+### Interpolate(RL.Color color, double interpolation): RL.Color
+
+```csharp
+var color1 = new RL.Color("#FF0000");
+var color2 = new RL.Color("#0000FF");
+var interpolatedColor = color1.Interpolate(color2, 0.5);
+Console.WriteLine("interpolated color hex-string: " + interpolatedColor.ToHEXString());
+```
+
+> interpolated color hex-string: #800080  
+
+<a name="interpolate_hsv"></a>
+
+### InterpolateHSV(RL.Color color, double interpolation): RL.Color
+
+```csharp
+var color1 = new RL.Color("#FF0000");
+var color2 = new RL.Color("#0000FF");
+var interpolatedColor = color1.InterpolateHSV(color2, 0.5);
+Console.WriteLine("interpolated color hex-string: " + interpolatedColor.ToHEXString());
+```
+
+> interpolated color hex-string: #00FF00  
 
 <a name="invert"></a>
 
