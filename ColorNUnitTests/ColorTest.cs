@@ -324,5 +324,23 @@ namespace ColorNUnitTests
             Assert.AreEqual("red", redColor.OriginalString);
             Assert.AreEqual("#800000", greenColor.OriginalString);
         }
+
+        [Test]
+        public void TestInterpolate()
+        {
+            var color1 = new Color("#FF0000");
+            var color2 = new Color("#0000FF");
+            var interpolated = color1.Interpolate(color2, 0.5);
+            Assert.AreEqual("#800080", interpolated.ToHEXString());
+        }
+
+        [Test]
+        public void TestInterpolateHSV()
+        {
+            var color1 = new Color("#FF0000");
+            var color2 = new Color("#0000FF");
+            var interpolated = color1.InterpolateHSV(color2, 0.5);
+            Assert.AreEqual("#00FF00", interpolated.ToHEXString());
+        }
 	}
 }

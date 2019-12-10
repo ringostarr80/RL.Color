@@ -1529,6 +1529,111 @@ namespace RL
 			this._originalString = string.Empty;
 		}
 
+		private static byte[] GetRGBFromHSV(double h, double s, double v)
+		{
+			if (h < 0.0 || h > 360.0) {
+				h = ((h % 360.0) + 360.0) % 360.0;
+			}
+			if (s < 0.0) {
+				s = 0.0;
+			} else if (s > 1.0) {
+				s = 1.0;
+			}
+			if (v < 0.0) {
+				v = 0.0;
+			} else if (v > 1.0) {
+				v = 1.0;
+			}
+
+			var c = v * s;
+			var x = c * (1.0 - Math.Abs((h / 60.0) % 2.0 - 1.0));
+			var m = v - c;
+
+			var r1 = 0.0;
+			var g1 = 0.0;
+			var b1 = 0.0;
+			if ((h >= 0.0 && h < 60.0) || h == 360.0) {
+				r1 = c;
+				g1 = x;
+			} else if (h >= 60.0 && h < 120.0) {
+				r1 = x;
+				g1 = c;
+			} else if (h >= 120.0 && h < 180.0) {
+				g1 = c;
+				b1 = x;
+			} else if (h >= 180.0 && h < 240.0) {
+				g1 = x;
+				b1 = c;
+			} else if (h >= 240.0 && h < 300.0) {
+				r1 = x;
+				b1 = c;
+			} else if (h >= 300.0 && h < 360.0) {
+				r1 = c;
+				b1 = x;
+			}
+
+			var r = (byte)Math.Round((r1 + m) * 255.0);
+			var g = (byte)Math.Round((g1 + m) * 255.0);
+			var b = (byte)Math.Round((b1 + m) * 255.0);
+
+			return new byte[] { r, g, b };
+		}
+
+		private double[] GetHSVA()
+		{
+			var min = 1.0;
+			var max = 0.0;
+
+			var red = (double)this._red / 255.0;
+			var green = (double)this._green / 255.0;
+			var blue = (double)this._blue / 255.0;
+			var alpha = Math.Round((double)this._alpha / 255.0, 2);
+
+			if (red < min) {
+				min = red;
+			}
+			if (green < min) {
+				min = green;
+			}
+			if (blue < min) {
+				min = blue;
+			}
+			if (red > max) {
+				max = red;
+			}
+			if (green > max) {
+				max = green;
+			}
+			if (blue > max) {
+				max = blue;
+			}
+
+			if (max == 0.0) {
+				return new double[] { 0.0, 0.0, 0.0, alpha };
+			}
+
+			var v = max;
+			var delta = max - min;
+			var s = delta / max;
+			var h = 0.0;
+			if (delta != 0.0) {
+				if (red == max) {
+					h = (green - blue) / delta;
+				} else if (green == max) {
+					h = 2.0 + (blue - red) / delta;
+				} else {
+					h = 4.0 + (red - green) / delta;
+				};
+
+				h *= 60.0;
+				if (h < 0.0) {
+					h += 360.0;
+				}
+			}
+
+			return new double[] { h, s, v, alpha };
+		}
+
 		private void GetHSLValue(out double h, out double s, out double l) {
 			h = 0;
 			s = 0;
@@ -1640,6 +1745,52 @@ namespace RL
 		{
 			var grayValue = (int)Math.Floor((double)this._red * 0.299 + (double)this._green * 0.587 + (double)this._blue * 0.114);
 			return new Color(this._alpha, grayValue, grayValue, grayValue);
+		}
+
+		/// <summary>
+		/// Interpolates the current color and returns a new instance.
+		/// </summary>
+		/// <returns>A new RL.Color instance.</returns>
+		public Color Interpolate(Color color, double interpolation)
+		{
+			interpolation = Math.Max(Math.Min(interpolation, 1.0), 0.0);
+
+			var a = (int)Math.Round((double)this._alpha + (double)((int)color.A - (int)this._alpha) * interpolation);
+			var r = (int)Math.Round((double)this._red + (double)((int)color.R - (int)this._red) * interpolation);
+			var g = (int)Math.Round((double)this._green + (double)((int)color.G - (int)this._green) * interpolation);
+			var b = (int)Math.Round((double)this._blue + (double)((int)color.B - (int)this._blue) * interpolation);
+
+			return new Color(a, r, g, b);
+		}
+
+		/// <summary>
+		/// Interpolates the current color by hsv colorspace and returns a new instance.
+		/// </summary>
+		/// <returns>A new RL.Color instance.</returns>
+		public Color InterpolateHSV(Color color, double interpolation)
+		{
+			interpolation = Math.Max(Math.Min(interpolation, 1.0), 0.0);
+
+			var hsva = this.GetHSVA();
+			var first_h = hsva[0];
+			var first_s = hsva[1];
+			var first_v = hsva[2];
+
+			var second_hsva = color.GetHSVA();
+			var second_h = second_hsva[0];
+			var second_s = second_hsva[1];
+			var second_v = second_hsva[2];
+
+			var new_h = first_h + (second_h - first_h) * interpolation;
+			var new_s = first_s + (second_s - first_s) * interpolation;
+			var new_v = first_v + (second_v - first_v) * interpolation;
+			var new_a = (double)this._alpha + (double)((int)color.A - (int)this._alpha) * interpolation / 255.0;
+			new_a = Math.Max(Math.Min(new_a, 1.0), 0.0);
+
+			var a = (int)Math.Round(new_a * 255.0);
+			var rgb = Color.GetRGBFromHSV(new_h, new_s, new_v);
+
+			return new Color(a, rgb[0], rgb[1], rgb[2]);
 		}
 
 		/// <summary>

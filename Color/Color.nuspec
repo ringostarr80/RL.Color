@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>RL.Color</id>
-		<version>0.1.1</version>
+		<version>0.1.2</version>
 		<title>RL.Color</title>
 		<authors>Ringo Leese</authors>
 		<owners>Ringo Leese</owners>
@@ -11,7 +11,7 @@
 		<defaultPushSource>https://www.nuget.org/api/v2/package</defaultPushSource>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>This is a replacement class for the System.Drawing.Color-structure</description>
-		<releaseNotes>Initial Release.</releaseNotes>
+		<releaseNotes>added Interpolate and InterpolateHSV methods.</releaseNotes>
 		<copyright>Copyright 2018</copyright>
 		<tags>color manipulation</tags>
 		<dependencies>
