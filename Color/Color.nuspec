@@ -2,7 +2,7 @@
 <package>
 	<metadata>
 		<id>RL.Color</id>
-		<version>0.2.1</version>
+		<version>0.3.0</version>
 		<title>RL.Color</title>
 		<authors>Ringo Leese</authors>
 		<owners>Ringo Leese</owners>
@@ -11,16 +11,16 @@
 		<defaultPushSource>https://www.nuget.org/api/v2/package</defaultPushSource>
 		<requireLicenseAcceptance>false</requireLicenseAcceptance>
 		<description>This is a replacement class for the System.Drawing.Color-structure</description>
-		<releaseNotes>added Interpolate and InterpolateHSV methods.</releaseNotes>
-		<copyright>Copyright 2018</copyright>
+		<releaseNotes>changed target framework to .NET 6.0</releaseNotes>
+		<copyright>Copyright 2022</copyright>
 		<tags>color manipulation</tags>
 		<dependencies>
-			<group targetFramework="net5.0"/>
+			<group targetFramework="net6.0"/>
 		</dependencies>
 	</metadata>
 	<files>
 		<file src="..\LICENSE" target="LICENSE"/>
-		<file src="bin\Release\net5.0\Color.dll" target="lib\net5.0"/>
-		<file src="bin\Release\net5.0\Color.xml" target="lib\net5.0"/>
+		<file src="bin\Release\net6.0\Color.dll" target="lib\net6.0"/>
+		<file src="bin\Release\net6.0\Color.xml" target="lib\net6.0"/>
 	</files>
 </package>

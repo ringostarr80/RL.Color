@@ -4,6 +4,12 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.3.0] - 2022-12-24
+### Added
+- CodeAnalysis
+### Changed
+- dotnet Framework to .NET-Core 6.0
+
 ## [0.2.1] - 2022-03-28
 ### Changed
 - dotnet Framework to .NET-Core 5.0 in favor to support older platforms in the github CodeQL workflow

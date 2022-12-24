@@ -10,7 +10,7 @@ namespace RL
 	/// </summary>
     public class Color
     {
-        private static Dictionary<string, string> _abbreviations = new Dictionary<string, string> {
+        private static readonly Dictionary<string, string> abbreviations = new() {
             {"AQ", "#00FFFF"},
 			{"BK", "#000000"},
             {"BL", "#0000FF"},
@@ -33,7 +33,7 @@ namespace RL
 			{"WH", "#FFFFFF"},
 			{"YE", "#FFFF00"}
 		};
-		private static Dictionary<string, string> _knownColors = new Dictionary<string, string> {
+		private static readonly Dictionary<string, string> knownColors = new() {
 			{"aliceblue", "#F0F8FF"},
             {"antiqueqhite", "#FAEBD7"},
 			{"aqua", "#00FFFF"},
@@ -184,37 +184,33 @@ namespace RL
 			{"yellowgreen", "#9ACD32"}
 		};
 
-		private byte _alpha = 255;
-		private byte _red = 0;
-		private byte _green = 0;
-		private byte _blue = 0;
-		private string _originalString = string.Empty;
+		private string originalString = string.Empty;
 
         /// <summary>
         /// Alpha
         /// </summary>
         /// <value>The alpha value of this Color-instance.</value>
-		public byte A { get { return this._alpha; } set { this._alpha = value; } }
+		public byte A { get; set; } = 255;
         /// <summary>
         /// Red
         /// </summary>
         /// <value>The red value of this Color-instance.</value>
-		public byte R { get { return this._red; } set { this._red = value; } }
+		public byte R { get; set; }
         /// <summary>
         /// Green
         /// </summary>
         /// <value>The green value of this Color-instance.</value>
-		public byte G { get { return this._green; } set { this._green = value; } }
+		public byte G { get; set; }
         /// <summary>
         /// Blue
         /// </summary>
         /// <value>The blue value of this Color-instance.</value>
-		public byte B { get { return this._blue; } set { this._blue = value; } }
+		public byte B { get; set; }
 		/// <summary>
 		/// Original String
 		/// </summary>
 		/// <value>The orginal string, that was given by the new-constructor.</value>
-		public string OriginalString { get { return this._originalString; } }
+		public string OriginalString { get { return this.originalString; } }
         /// <summary>
         /// Cyan
         /// </summary>
@@ -1007,10 +1003,10 @@ namespace RL
 		/// <param name="color">A color to use.</param>
 		public Color(System.Drawing.Color color)
 		{
-			this._alpha = color.A;
-			this._red = color.R;
-			this._green = color.G;
-			this._blue = color.B;
+			this.A = color.A;
+			this.R = color.R;
+			this.G = color.G;
+			this.B = color.B;
 		}
 
 		/// <summary>
@@ -1020,10 +1016,10 @@ namespace RL
 		public Color(int argb)
 		{
 			var color = System.Drawing.Color.FromArgb(argb);
-			this._alpha = color.A;
-			this._red = color.R;
-			this._green = color.G;
-			this._blue = color.B;
+			this.A = color.A;
+			this.R = color.R;
+			this.G = color.G;
+			this.B = color.B;
 		}
 
 		/// <summary>
@@ -1034,10 +1030,10 @@ namespace RL
 		public Color(int alpha, System.Drawing.Color baseColor)
 		{
 			var color = System.Drawing.Color.FromArgb(alpha, baseColor);
-			this._alpha = color.A;
-			this._red = color.R;
-			this._green = color.G;
-			this._blue = color.B;
+			this.A = color.A;
+			this.R = color.R;
+			this.G = color.G;
+			this.B = color.B;
 		}
 
 		/// <summary>
@@ -1048,10 +1044,10 @@ namespace RL
 		public Color(int alpha, Color baseColor)
 		{
 			var color = System.Drawing.Color.FromArgb(alpha, baseColor.R, baseColor.G, baseColor.B);
-			this._alpha = color.A;
-			this._red = color.R;
-			this._green = color.G;
-			this._blue = color.B;
+			this.A = color.A;
+			this.R = color.R;
+			this.G = color.G;
+			this.B = color.B;
 		}
 
 		/// <summary>
@@ -1063,10 +1059,10 @@ namespace RL
 		public Color(int red, int green, int blue)
 		{
 			var color = System.Drawing.Color.FromArgb(red, green, blue);
-			this._alpha = color.A;
-			this._red = color.R;
-			this._green = color.G;
-			this._blue = color.B;
+			this.A = color.A;
+			this.R = color.R;
+			this.G = color.G;
+			this.B = color.B;
 		}
 
 		/// <summary>
@@ -1079,10 +1075,10 @@ namespace RL
 		public Color(int alpha, int red, int green, int blue)
 		{
 			var color = System.Drawing.Color.FromArgb(alpha, red, green, blue);
-			this._alpha = color.A;
-			this._red = color.R;
-			this._green = color.G;
-			this._blue = color.B;
+			this.A = color.A;
+			this.R = color.R;
+			this.G = color.G;
+			this.B = color.B;
 		}
 
 		/// <summary>
@@ -1103,59 +1099,59 @@ namespace RL
 		{
 			Color color = null;
 			if (TryParseHexColor(stringColor, ref color)) {
-				this._alpha = color.A;
-				this._red = color.R;
-				this._green = color.G;
-				this._blue = color.B;
-				this._originalString = stringColor;
+				this.A = color.A;
+				this.R = color.R;
+				this.G = color.G;
+				this.B = color.B;
+				this.originalString = stringColor;
 				return;
 			}
 
 			if (TryParseRgbColor(stringColor, ref color)) {
-				this._alpha = color.A;
-				this._red = color.R;
-				this._green = color.G;
-				this._blue = color.B;
-				this._originalString = stringColor;
+				this.A = color.A;
+				this.R = color.R;
+				this.G = color.G;
+				this.B = color.B;
+				this.originalString = stringColor;
 				return;
 			}
 
 			if (TryParseRgbaColor(stringColor, ref color)) {
-				this._alpha = color.A;
-				this._red = color.R;
-				this._green = color.G;
-				this._blue = color.B;
-				this._originalString = stringColor;
+				this.A = color.A;
+				this.R = color.R;
+				this.G = color.G;
+				this.B = color.B;
+				this.originalString = stringColor;
 				return;
 			}
 
 			if (TryParseCmykColor(stringColor, ref color)) {
-				this._alpha = color.A;
-				this._red = color.R;
-				this._green = color.G;
-				this._blue = color.B;
-				this._originalString = stringColor;
+				this.A = color.A;
+				this.R = color.R;
+				this.G = color.G;
+				this.B = color.B;
+				this.originalString = stringColor;
 				return;
 			}
 
-			if (_abbreviations.ContainsKey(stringColor.ToUpper())) {
-				if (TryParseHexColor(_abbreviations[stringColor.ToUpper()], ref color)) {
-					this._alpha = color.A;
-					this._red = color.R;
-					this._green = color.G;
-					this._blue = color.B;
-					this._originalString = stringColor;
+			if (abbreviations.ContainsKey(stringColor.ToUpper())) {
+				if (TryParseHexColor(abbreviations[stringColor.ToUpper()], ref color)) {
+					this.A = color.A;
+					this.R = color.R;
+					this.G = color.G;
+					this.B = color.B;
+					this.originalString = stringColor;
 					return;
 				}
 			}
 
-			if (_knownColors.ContainsKey(stringColor.ToLower())) {
-				if (TryParseHexColor(_knownColors[stringColor.ToLower()], ref color)) {
-					this._alpha = color.A;
-					this._red = color.R;
-					this._green = color.G;
-					this._blue = color.B;
-					this._originalString = stringColor;
+			if (knownColors.ContainsKey(stringColor.ToLower())) {
+				if (TryParseHexColor(knownColors[stringColor.ToLower()], ref color)) {
+					this.A = color.A;
+					this.R = color.R;
+					this.G = color.G;
+					this.B = color.B;
+					this.originalString = stringColor;
 					return;
 				}
 			}
@@ -1170,7 +1166,7 @@ namespace RL
 		/// <returns>bool</returns>
 		public override bool Equals(object obj)
 		{
-			if (Object.ReferenceEquals(obj, null)) {
+			if (obj is null) {
 				return false;
 			}
 			if (Object.ReferenceEquals(this, obj)) {
@@ -1181,7 +1177,7 @@ namespace RL
 			}
 
 			var color = (Color)obj;
-			return (this._alpha == color._alpha) && (this._red == color._red) && (this._green == color._green) && (this._blue == color._blue);
+			return (this.A == color.A) && (this.R == color.R) && (this.G == color.G) && (this.B == color.B);
 		}
 
 		/// <summary>
@@ -1190,13 +1186,7 @@ namespace RL
 		/// <returns>int</returns>
 		public override int GetHashCode()
 		{
-			int hash = 17;
-			hash = hash * 23 + this._alpha.GetHashCode();
-			hash = hash * 23 + this._red.GetHashCode();
-			hash = hash * 23 + this._green.GetHashCode();
-			hash = hash * 23 + this._blue.GetHashCode();
-
-			return hash;
+			return HashCode.Combine(this.A, this.R, this.G, this.B);
 		}
 
 		/// <summary>
@@ -1207,8 +1197,8 @@ namespace RL
 		/// <returns>bool</returns>
 		public static bool operator ==(Color color1, Color color2)
 		{
-			if (Object.ReferenceEquals(color1, null)) {
-				if (Object.ReferenceEquals(color2, null)) {
+			if (color1 is null) {
+				if (color2 is null) {
 					return true;
 				}
 				return false;
@@ -1235,11 +1225,11 @@ namespace RL
 		/// <returns>RL.Color</returns>
 		public static Color operator +(Color color1, Color color2)
 		{
-			var red = Math.Min(color1._red + color2._red, 255);
-			var green = Math.Min(color1._green + color2._green, 255);
-			var blue = Math.Min(color1._blue + color2._blue, 255);
+			var red = Math.Min(color1.R + color2.R, 255);
+			var green = Math.Min(color1.G + color2.G, 255);
+			var blue = Math.Min(color1.B + color2.B, 255);
 
-			return new Color(color1._alpha, red, green, blue);
+			return new Color(color1.A, red, green, blue);
 		}
 
 		/// <summary>
@@ -1250,11 +1240,11 @@ namespace RL
 		/// <returns>RL.Color</returns>
 		public static Color operator -(Color color1, Color color2)
 		{
-			var red = Math.Max(color1._red - color2._red, 0);
-			var green = Math.Max(color1._green - color2._green, 0);
-			var blue = Math.Max(color1._blue - color2._blue, 0);
+			var red = Math.Max(color1.R - color2.R, 0);
+			var green = Math.Max(color1.G - color2.G, 0);
+			var blue = Math.Max(color1.B - color2.B, 0);
 
-			return new Color(color1._alpha, red, green, blue);
+			return new Color(color1.A, red, green, blue);
 		}
 
 		/// <summary>
@@ -1438,10 +1428,10 @@ namespace RL
 			if (color == null) {
 				color = new Color();
 			}
-            color._alpha = colorFromArgb.A;
-			color._red = colorFromArgb.R;
-			color._green = colorFromArgb.G;
-			color._blue = colorFromArgb.B;
+            color.A = colorFromArgb.A;
+			color.R = colorFromArgb.R;
+			color.G = colorFromArgb.G;
+			color.B = colorFromArgb.B;
 
 			return true;
 		}
@@ -1460,9 +1450,9 @@ namespace RL
 			if (color == null) {
 				color = new Color();
 			}
-			color._red = colorFromArgb.R;
-			color._green = colorFromArgb.G;
-			color._blue = colorFromArgb.B;
+			color.R = colorFromArgb.R;
+			color.G = colorFromArgb.G;
+			color.B = colorFromArgb.B;
 
 			return true;
 		}
@@ -1482,10 +1472,10 @@ namespace RL
 			if (color == null) {
 				color = new Color();
 			}
-			color._alpha = colorFromArgb.A;
-			color._red = colorFromArgb.R;
-			color._green = colorFromArgb.G;
-			color._blue = colorFromArgb.B;
+			color.A = colorFromArgb.A;
+			color.R = colorFromArgb.R;
+			color.G = colorFromArgb.G;
+			color.B = colorFromArgb.B;
 
 			return true;
 		}
@@ -1510,10 +1500,10 @@ namespace RL
 			if (color == null) {
 				color = new Color();
 			}
-			color._alpha = colorFromArgb.A;
-			color._red = colorFromArgb.R;
-			color._green = colorFromArgb.G;
-			color._blue = colorFromArgb.B;
+			color.A = colorFromArgb.A;
+			color.R = colorFromArgb.R;
+			color.G = colorFromArgb.G;
+			color.B = colorFromArgb.B;
 
 			return true;
 		}
@@ -1522,11 +1512,11 @@ namespace RL
 		/// Resets the color (black).
 		/// </summary>
 		public void Reset() {
-			this._alpha = 255;
-			this._red = 0;
-			this._green = 0;
-			this._blue = 0;
-			this._originalString = string.Empty;
+			this.A = 255;
+			this.R = 0;
+			this.G = 0;
+			this.B = 0;
+			this.originalString = string.Empty;
 		}
 
 		private static byte[] GetRGBFromHSV(double h, double s, double v)
@@ -1584,10 +1574,10 @@ namespace RL
 			var min = 1.0;
 			var max = 0.0;
 
-			var red = (double)this._red / 255.0;
-			var green = (double)this._green / 255.0;
-			var blue = (double)this._blue / 255.0;
-			var alpha = Math.Round((double)this._alpha / 255.0, 2);
+			var red = (double)this.R / 255.0;
+			var green = (double)this.G / 255.0;
+			var blue = (double)this.B / 255.0;
+			var alpha = Math.Round((double)this.A / 255.0, 2);
 
 			if (red < min) {
 				min = red;
@@ -1635,16 +1625,15 @@ namespace RL
 		}
 
 		private void GetHSLValue(out double h, out double s, out double l) {
-			h = 0;
-			s = 0;
-			l = 0;
+			h = 0.0;
+			s = 0.0;
 
 			var min = 1.0;
 			var max = 0.0;
 
-			var red = this._red / 255.0;
-			var green = this._green / 255.0;
-			var blue = this._blue / 255.0;
+			var red = this.R / 255.0;
+			var green = this.G / 255.0;
+			var blue = this.B / 255.0;
 
 			if (red < min) {
 				min = red;
@@ -1667,9 +1656,7 @@ namespace RL
 
 			l = (max + min) / 2.0;
 
-			if (max == min) {
-				s = 0.0;
-			} else {
+			if (max != min) {
 				s = (l < 0.5) ? (max - min) / (max + min) : (max - min) / (2.0 - max - min);
 			}
 
@@ -1689,21 +1676,21 @@ namespace RL
 
 		private void SetHSLValue(double h, double s, double l) {
 			if (h < 0.0 || h > 360.0) {
-				throw new ArgumentException("The argument for h[hue] (" + h + ") is out of range. It must be between 0.0 and 360.0.", "h");
+				throw new ArgumentException("The argument for h[hue] (" + h + ") is out of range. It must be between 0.0 and 360.0.", nameof(h));
 			}
 			if (s < 0.0 || s > 1.0) {
-				throw new ArgumentException("The argument for s[saturation] (" + s + ") is out of range. It must be between 0.0 and 1.0.", "s");
+				throw new ArgumentException("The argument for s[saturation] (" + s + ") is out of range. It must be between 0.0 and 1.0.", nameof(s));
 			}
 			if (l < 0.0 || l > 1.0) {
-				throw new ArgumentException("The argument for l[lightness] (" + l + ") is out of range. It must be between 0.0 and 1.0.", "l");
+				throw new ArgumentException("The argument for l[lightness] (" + l + ") is out of range. It must be between 0.0 and 1.0.", nameof(l));
 			}
 
 			this.Reset();
 
 			if (s == 0) {
-				this._red = (byte)Math.Round(l * 255.0);
-				this._green = (byte)Math.Round(l * 255.0);
-				this._blue = (byte)Math.Round(l * 255.0);
+				this.R = (byte)Math.Round(l * 255.0);
+				this.G = (byte)Math.Round(l * 255.0);
+				this.B = (byte)Math.Round(l * 255.0);
 			} else {
 				var t3 = new double[3] { 0, 0, 0 };
 				var c = new double[3] { 0, 0, 0 };
@@ -1731,9 +1718,9 @@ namespace RL
 					}
 				}
 
-				this._red = (byte)Math.Round(c[0] * 255.0);
-				this._green = (byte)Math.Round(c[1] * 255.0);
-				this._blue = (byte)Math.Round(c[2] * 255.0);
+				this.R = (byte)Math.Round(c[0] * 255.0);
+				this.G = (byte)Math.Round(c[1] * 255.0);
+				this.B = (byte)Math.Round(c[2] * 255.0);
 			}
 		}
 
@@ -1743,8 +1730,8 @@ namespace RL
 		/// <returns>A new RL.Color instance.</returns>
 		public Color Grayscale()
 		{
-			var grayValue = (int)Math.Floor((double)this._red * 0.299 + (double)this._green * 0.587 + (double)this._blue * 0.114);
-			return new Color(this._alpha, grayValue, grayValue, grayValue);
+			var grayValue = (int)Math.Floor((double)this.R * 0.299 + (double)this.G * 0.587 + (double)this.B * 0.114);
+			return new Color(this.A, grayValue, grayValue, grayValue);
 		}
 
 		/// <summary>
@@ -1755,10 +1742,10 @@ namespace RL
 		{
 			interpolation = Math.Max(Math.Min(interpolation, 1.0), 0.0);
 
-			var a = (int)Math.Round((double)this._alpha + (double)((int)color.A - (int)this._alpha) * interpolation);
-			var r = (int)Math.Round((double)this._red + (double)((int)color.R - (int)this._red) * interpolation);
-			var g = (int)Math.Round((double)this._green + (double)((int)color.G - (int)this._green) * interpolation);
-			var b = (int)Math.Round((double)this._blue + (double)((int)color.B - (int)this._blue) * interpolation);
+			var a = (int)Math.Round((double)this.A + (double)((int)color.A - (int)this.A) * interpolation);
+			var r = (int)Math.Round((double)this.R + (double)((int)color.R - (int)this.R) * interpolation);
+			var g = (int)Math.Round((double)this.G + (double)((int)color.G - (int)this.G) * interpolation);
+			var b = (int)Math.Round((double)this.B + (double)((int)color.B - (int)this.B) * interpolation);
 
 			return new Color(a, r, g, b);
 		}
@@ -1784,7 +1771,7 @@ namespace RL
 			var new_h = first_h + (second_h - first_h) * interpolation;
 			var new_s = first_s + (second_s - first_s) * interpolation;
 			var new_v = first_v + (second_v - first_v) * interpolation;
-			var new_a = (double)this._alpha + (double)((int)color.A - (int)this._alpha) * interpolation / 255.0;
+			var new_a = (double)this.A + (double)((int)color.A - (int)this.A) * interpolation / 255.0;
 			new_a = Math.Max(Math.Min(new_a, 1.0), 0.0);
 
 			var a = (int)Math.Round(new_a * 255.0);
@@ -1799,7 +1786,7 @@ namespace RL
 		/// <returns>A new RL.Color instance.</returns>
 		public Color Invert()
 		{
-			return new Color(this._alpha, 255 - this._red, 255 - this._green, 255 - this._blue);
+			return new Color(this.A, 255 - this.R, 255 - this.G, 255 - this.B);
 		}
 
 		/// <summary>
@@ -1832,7 +1819,7 @@ namespace RL
 		/// <returns>A new RL.Color instance.</returns>
 		public Color Colorize(Color color)
 		{
-			return new Color((int)Math.Round(this._alpha * color.A / 255.0), (int)Math.Round(this._red * color.R / 255.0), (int)Math.Round(this._green * color.G / 255.0), (int)Math.Round(this._blue * color.B / 255.0));
+			return new Color((int)Math.Round(this.A * color.A / 255.0), (int)Math.Round(this.R * color.R / 255.0), (int)Math.Round(this.G * color.G / 255.0), (int)Math.Round(this.B * color.B / 255.0));
 		}
 		
 		/// <summary>
