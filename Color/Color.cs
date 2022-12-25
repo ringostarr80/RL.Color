@@ -1142,6 +1142,7 @@ namespace RL
                 this.G = abbrValue[1];
                 this.B = abbrValue[2];
                 this.originalString = stringColor;
+                return;
             }
 
             if (knownColors.ContainsKey(stringColor.ToLower())) {
