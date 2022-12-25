@@ -4,6 +4,7 @@
 ![NuGet](https://img.shields.io/nuget/v/RL.Color)
 ![Version](https://img.shields.io/github/v/tag/ringostarr80/RL.Color?sort=semver)
 ![Workflow: CodeQL](https://img.shields.io/github/actions/workflow/status/ringostarr80/RL.Color/test.yml?branch=main)
+[![codecov](https://codecov.io/gh/ringostarr80/RL.Color/branch/main/graph/badge.svg?token=8X0W58THED)](https://codecov.io/gh/ringostarr80/RL.Color)
 
 ## Purpose
 
