@@ -45,7 +45,7 @@ namespace ColorNUnitTests
             Assert.AreEqual(new Color(0xFF, 0x99, 0x32, 0xCC), Color.DarkOrchid);
             Assert.AreEqual(new Color(0xFF, 0x8B, 0x00, 0x00), Color.DarkRed);
             Assert.AreEqual(new Color(0xFF, 0xE9, 0x96, 0x7A), Color.DarkSalmon);
-            Assert.AreEqual(new Color(0xFF, 0x8F, 0xBC, 0x8B), Color.DarkSeaGreen);
+            Assert.AreEqual(new Color(0xFF, 0x8F, 0xBC, 0x8F), Color.DarkSeaGreen);
             Assert.AreEqual(new Color(0xFF, 0x48, 0x3D, 0x8B), Color.DarkSlateBlue);
             Assert.AreEqual(new Color(0xFF, 0x2F, 0x4F, 0x4F), Color.DarkSlateGray);
             Assert.AreEqual(new Color(0xFF, 0x00, 0xCE, 0xD1), Color.DarkTurquoise);

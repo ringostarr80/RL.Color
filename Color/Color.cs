@@ -68,7 +68,7 @@ namespace RL
             {"darkorchid", "#9932CC"},
             {"darkred", "#8B0000"},
             {"darksalmon", "#E9967A"},
-            {"darkseagreen", "#8FBC8B"},
+            {"darkseagreen", "#8FBC8F"},
             {"darkslateblue", "#483D8B"},
             {"darkslategray", "#2F4F4F"},
             {"darkslategrey", "#2F4F4F"},
