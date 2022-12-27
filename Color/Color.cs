@@ -278,715 +278,147 @@ namespace RL
             }
         }
 
-        /// <summary>
-        /// The AliceBlue color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color AliceBlue { get { return new Color(System.Drawing.Color.AliceBlue); } }
-        /// <summary>
-        /// The AntiqueWhite color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color AntiqueWhite { get { return new Color(System.Drawing.Color.AntiqueWhite); } }
-        /// <summary>
-        /// The Aqua color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Aqua { get { return new Color(System.Drawing.Color.Aqua); } }
-        /// <summary>
-        /// The Aquamarine color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Aquamarine { get { return new Color(System.Drawing.Color.Aquamarine); } }
-        /// <summary>
-        /// The Azure color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Azure { get { return new Color(System.Drawing.Color.Azure); } }
-        /// <summary>
-        /// The Beige color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Beige { get { return new Color(System.Drawing.Color.Beige); } }
-        /// <summary>
-        /// The Bisque color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Bisque { get { return new Color(System.Drawing.Color.Bisque); } }
-        /// <summary>
-        /// The Black color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Black { get { return new Color(System.Drawing.Color.Black); } }
-        /// <summary>
-        /// The BlanchedAlmond color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color BlanchedAlmond { get { return new Color(System.Drawing.Color.BlanchedAlmond); } }
-        /// <summary>
-        /// The Blue color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Blue { get { return new Color(System.Drawing.Color.Blue); } }
-        /// <summary>
-        /// The BlueViolet color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color BlueViolet { get { return new Color(System.Drawing.Color.BlueViolet); } }
-        /// <summary>
-        /// The Brown color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Brown { get { return new Color(System.Drawing.Color.Brown); } }
-        /// <summary>
-        /// The BurlyWood color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color BurlyWood { get { return new Color(System.Drawing.Color.BurlyWood); } }
-        /// <summary>
-        /// The CadetBlue color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color CadetBlue { get { return new Color(System.Drawing.Color.CadetBlue); } }
-        /// <summary>
-        /// The Chartreuse color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Chartreuse { get { return new Color(System.Drawing.Color.Chartreuse); } }
-        /// <summary>
-        /// The Chocolate color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Chocolate { get { return new Color(System.Drawing.Color.Chocolate); } }
-        /// <summary>
-        /// The Coral color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Coral { get { return new Color(System.Drawing.Color.Coral); } }
-        /// <summary>
-        /// The CornflowerBlue color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color CornflowerBlue { get { return new Color(System.Drawing.Color.CornflowerBlue); } }
-        /// <summary>
-        /// The Cornsilk color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Cornsilk { get { return new Color(System.Drawing.Color.Cornsilk); } }
-        /// <summary>
-        /// The Crimson color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Crimson { get { return new Color(System.Drawing.Color.Crimson); } }
-        /// <summary>
-        /// The Cyan color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Cyan { get { return new Color(System.Drawing.Color.Cyan); } }
-        /// <summary>
-        /// The DarkBlue color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color DarkBlue { get { return new Color(System.Drawing.Color.DarkBlue); } }
-        /// <summary>
-        /// The DarkCyan color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color DarkCyan { get { return new Color(System.Drawing.Color.DarkCyan); } }
-        /// <summary>
-        /// The DarkGoldenrod color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color DarkGoldenrod { get { return new Color(System.Drawing.Color.DarkGoldenrod); } }
-        /// <summary>
-        /// The DarkGray color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color DarkGray { get { return new Color(System.Drawing.Color.DarkGray); } }
-        /// <summary>
-        /// The DarkGreen color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color DarkGreen { get { return new Color(System.Drawing.Color.DarkGreen); } }
-        /// <summary>
-        /// The DarkKhaki color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color DarkKhaki { get { return new Color(System.Drawing.Color.DarkKhaki); } }
-        /// <summary>
-        /// The DarkMagenta color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color DarkMagenta { get { return new Color(System.Drawing.Color.DarkMagenta); } }
-        /// <summary>
-        /// The DarkOliveGreen color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color DarkOliveGreen { get { return new Color(System.Drawing.Color.DarkOliveGreen); } }
-        /// <summary>
-        /// The DarkOrange color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color DarkOrange { get { return new Color(System.Drawing.Color.DarkOrange); } }
-        /// <summary>
-        /// The DarkOrchid color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color DarkOrchid { get { return new Color(System.Drawing.Color.DarkOrchid); } }
-        /// <summary>
-        /// The DarkRed color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color DarkRed { get { return new Color(System.Drawing.Color.DarkRed); } }
-        /// <summary>
-        /// The DarkSalmon color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color DarkSalmon { get { return new Color(System.Drawing.Color.DarkSalmon); } }
-        /// <summary>
-        /// The DarkSeaGreen color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color DarkSeaGreen { get { return new Color(System.Drawing.Color.DarkSeaGreen); } }
-        /// <summary>
-        /// The DarkSlateBlue color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color DarkSlateBlue { get { return new Color(System.Drawing.Color.DarkSlateBlue); } }
-        /// <summary>
-        /// The DarkSlateGray color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color DarkSlateGray { get { return new Color(System.Drawing.Color.DarkSlateGray); } }
-        /// <summary>
-        /// The DarkTurquoise color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color DarkTurquoise { get { return new Color(System.Drawing.Color.DarkTurquoise); } }
-        /// <summary>
-        /// The DarkViolet color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color DarkViolet { get { return new Color(System.Drawing.Color.DarkViolet); } }
-        /// <summary>
-        /// The DeepPink color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color DeepPink { get { return new Color(System.Drawing.Color.DeepPink); } }
-        /// <summary>
-        /// The DeepSkyBlue color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color DeepSkyBlue { get { return new Color(System.Drawing.Color.DeepSkyBlue); } }
-        /// <summary>
-        /// The DimGray color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color DimGray { get { return new Color(System.Drawing.Color.DimGray); } }
-        /// <summary>
-        /// The DodgerBlue color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color DodgerBlue { get { return new Color(System.Drawing.Color.DodgerBlue); } }
-        /// <summary>
-        /// The Empty color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Empty { get { return new Color(System.Drawing.Color.Empty); } }
-        /// <summary>
-        /// The Firebrick color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Firebrick { get { return new Color(System.Drawing.Color.Firebrick); } }
-        /// <summary>
-        /// The FloralWhite color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color FloralWhite { get { return new Color(System.Drawing.Color.FloralWhite); } }
-        /// <summary>
-        /// The ForestGreen color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color ForestGreen { get { return new Color(System.Drawing.Color.ForestGreen); } }
-        /// <summary>
-        /// The Fuchsia color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Fuchsia { get { return new Color(System.Drawing.Color.Fuchsia); } }
-        /// <summary>
-        /// The Gainsboro color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Gainsboro { get { return new Color(System.Drawing.Color.Gainsboro); } }
-        /// <summary>
-        /// The GhostWhite color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color GhostWhite { get { return new Color(System.Drawing.Color.GhostWhite); } }
-        /// <summary>
-        /// The Gold color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Gold { get { return new Color(System.Drawing.Color.Gold); } }
-        /// <summary>
-        /// The Goldenrod color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Goldenrod { get { return new Color(System.Drawing.Color.Goldenrod); } }
-        /// <summary>
-        /// The Gray color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Gray { get { return new Color(System.Drawing.Color.Gray); } }
-        /// <summary>
-        /// The Green color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Green { get { return new Color(System.Drawing.Color.Green); } }
-        /// <summary>
-        /// The GreenYellow color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color GreenYellow { get { return new Color(System.Drawing.Color.GreenYellow); } }
-        /// <summary>
-        /// The Honeydew color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Honeydew { get { return new Color(System.Drawing.Color.Honeydew); } }
-        /// <summary>
-        /// The HotPink color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color HotPink { get { return new Color(System.Drawing.Color.HotPink); } }
-        /// <summary>
-        /// The IndianRed color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color IndianRed { get { return new Color(System.Drawing.Color.IndianRed); } }
-        /// <summary>
-        /// The Indigo color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Indigo { get { return new Color(System.Drawing.Color.Indigo); } }
-        /// <summary>
-        /// The Ivory color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Ivory { get { return new Color(System.Drawing.Color.Ivory); } }
-        /// <summary>
-        /// The Khaki color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Khaki { get { return new Color(System.Drawing.Color.Khaki); } }
-        /// <summary>
-        /// The Lavender color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Lavender { get { return new Color(System.Drawing.Color.Lavender); } }
-        /// <summary>
-        /// The LavenderBlush color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color LavenderBlush { get { return new Color(System.Drawing.Color.LavenderBlush); } }
-        /// <summary>
-        /// The LawnGreen color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color LawnGreen { get { return new Color(System.Drawing.Color.LawnGreen); } }
-        /// <summary>
-        /// The LemonChiffon color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color LemonChiffon { get { return new Color(System.Drawing.Color.LemonChiffon); } }
-        /// <summary>
-        /// The LightBlue color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color LightBlue { get { return new Color(System.Drawing.Color.LightBlue); } }
-        /// <summary>
-        /// The LightCoral color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color LightCoral { get { return new Color(System.Drawing.Color.LightCoral); } }
-        /// <summary>
-        /// The LightCyan color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color LightCyan { get { return new Color(System.Drawing.Color.LightCyan); } }
-        /// <summary>
-        /// The LightGoldenrodYellow color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color LightGoldenrodYellow { get { return new Color(System.Drawing.Color.LightGoldenrodYellow); } }
-        /// <summary>
-        /// The LightGray color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color LightGray { get { return new Color(System.Drawing.Color.LightGray); } }
-        /// <summary>
-        /// The LightGreen color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color LightGreen { get { return new Color(System.Drawing.Color.LightGreen); } }
-        /// <summary>
-        /// The LightPink color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color LightPink { get { return new Color(System.Drawing.Color.LightPink); } }
-        /// <summary>
-        /// The LightSalmon color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color LightSalmon { get { return new Color(System.Drawing.Color.LightSalmon); } }
-        /// <summary>
-        /// The LightSeaGreen color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color LightSeaGreen { get { return new Color(System.Drawing.Color.LightSeaGreen); } }
-        /// <summary>
-        /// The LightSkyBlue color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color LightSkyBlue { get { return new Color(System.Drawing.Color.LightSkyBlue); } }
-        /// <summary>
-        /// The LightSlateGray color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color LightSlateGray { get { return new Color(System.Drawing.Color.LightSlateGray); } }
-        /// <summary>
-        /// The LightSteelBlue color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color LightSteelBlue { get { return new Color(System.Drawing.Color.LightSteelBlue); } }
-        /// <summary>
-        /// The LightYellow color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color LightYellow { get { return new Color(System.Drawing.Color.LightYellow); } }
-        /// <summary>
-        /// The Lime color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Lime { get { return new Color(System.Drawing.Color.Lime); } }
-        /// <summary>
-        /// The LimeGreen color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color LimeGreen { get { return new Color(System.Drawing.Color.LimeGreen); } }
-        /// <summary>
-        /// The Linen color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Linen { get { return new Color(System.Drawing.Color.Linen); } }
-        /// <summary>
-        /// The Magenta color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Magenta { get { return new Color(System.Drawing.Color.Magenta); } }
-        /// <summary>
-        /// The Maroon color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Maroon { get { return new Color(System.Drawing.Color.Maroon); } }
-        /// <summary>
-        /// The MediumAquamarine color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color MediumAquamarine { get { return new Color(System.Drawing.Color.MediumAquamarine); } }
-        /// <summary>
-        /// The MediumBlue color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color MediumBlue { get { return new Color(System.Drawing.Color.MediumBlue); } }
-        /// <summary>
-        /// The MediumOrchid color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color MediumOrchid { get { return new Color(System.Drawing.Color.MediumOrchid); } }
-        /// <summary>
-        /// The MediumPurple color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color MediumPurple { get { return new Color(System.Drawing.Color.MediumPurple); } }
-        /// <summary>
-        /// The MediumSeaGreen color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color MediumSeaGreen { get { return new Color(System.Drawing.Color.MediumSeaGreen); } }
-        /// <summary>
-        /// The MediumSlateBlue color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color MediumSlateBlue { get { return new Color(System.Drawing.Color.MediumSlateBlue); } }
-        /// <summary>
-        /// The MediumSpringGreen color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color MediumSpringGreen { get { return new Color(System.Drawing.Color.MediumSpringGreen); } }
-        /// <summary>
-        /// The MediumTurquoise color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color MediumTurquoise { get { return new Color(System.Drawing.Color.MediumTurquoise); } }
-        /// <summary>
-        /// The MediumVioletRed color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color MediumVioletRed { get { return new Color(System.Drawing.Color.MediumVioletRed); } }
-        /// <summary>
-        /// The MidnightBlue color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color MidnightBlue { get { return new Color(System.Drawing.Color.MidnightBlue); } }
-        /// <summary>
-        /// The MintCream color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color MintCream { get { return new Color(System.Drawing.Color.MintCream); } }
-        /// <summary>
-        /// The MistyRose color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color MistyRose { get { return new Color(System.Drawing.Color.MistyRose); } }
-        /// <summary>
-        /// The Moccasin color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Moccasin { get { return new Color(System.Drawing.Color.Moccasin); } }
-        /// <summary>
-        /// The NavajoWhite color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color NavajoWhite { get { return new Color(System.Drawing.Color.NavajoWhite); } }
-        /// <summary>
-        /// The Navy color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Navy { get { return new Color(System.Drawing.Color.Navy); } }
-        /// <summary>
-        /// The OldLace color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color OldLace { get { return new Color(System.Drawing.Color.OldLace); } }
-        /// <summary>
-        /// The Olive color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Olive { get { return new Color(System.Drawing.Color.Olive); } }
-        /// <summary>
-        /// The OliveDrab color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color OliveDrab { get { return new Color(System.Drawing.Color.OliveDrab); } }
-        /// <summary>
-        /// The Orange color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Orange { get { return new Color(System.Drawing.Color.Orange); } }
-        /// <summary>
-        /// The OrangeRed color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color OrangeRed { get { return new Color(System.Drawing.Color.OrangeRed); } }
-        /// <summary>
-        /// The Orchid color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Orchid { get { return new Color(System.Drawing.Color.Orchid); } }
-        /// <summary>
-        /// The PaleGoldenrod color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color PaleGoldenrod { get { return new Color(System.Drawing.Color.PaleGoldenrod); } }
-        /// <summary>
-        /// The PaleGreen color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color PaleGreen { get { return new Color(System.Drawing.Color.PaleGreen); } }
-        /// <summary>
-        /// The PaleTurquoise color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color PaleTurquoise { get { return new Color(System.Drawing.Color.PaleTurquoise); } }
-        /// <summary>
-        /// The PaleVioletRed color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color PaleVioletRed { get { return new Color(System.Drawing.Color.PaleVioletRed); } }
-        /// <summary>
-        /// The PapayaWhip color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color PapayaWhip { get { return new Color(System.Drawing.Color.PapayaWhip); } }
-        /// <summary>
-        /// The PeachPuff color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color PeachPuff { get { return new Color(System.Drawing.Color.PeachPuff); } }
-        /// <summary>
-        /// The Peru color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Peru { get { return new Color(System.Drawing.Color.Peru); } }
-        /// <summary>
-        /// The Pink color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Pink { get { return new Color(System.Drawing.Color.Pink); } }
-        /// <summary>
-        /// The Plum color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Plum { get { return new Color(System.Drawing.Color.Plum); } }
-        /// <summary>
-        /// The PowderBlue color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color PowderBlue { get { return new Color(System.Drawing.Color.PowderBlue); } }
-        /// <summary>
-        /// The Purple color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Purple { get { return new Color(System.Drawing.Color.Purple); } }
-        /// <summary>
-        /// The Red color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Red { get { return new Color(System.Drawing.Color.Red); } }
-        /// <summary>
-        /// The RosyBrown color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color RosyBrown { get { return new Color(System.Drawing.Color.RosyBrown); } }
-        /// <summary>
-        /// The RoyalBlue color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color RoyalBlue { get { return new Color(System.Drawing.Color.RoyalBlue); } }
-        /// <summary>
-        /// The SaddleBrown color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color SaddleBrown { get { return new Color(System.Drawing.Color.SaddleBrown); } }
-        /// <summary>
-        /// The Salmon color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Salmon { get { return new Color(System.Drawing.Color.Salmon); } }
-        /// <summary>
-        /// The SandyBrown color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color SandyBrown { get { return new Color(System.Drawing.Color.SandyBrown); } }
-        /// <summary>
-        /// The SeaGreen color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color SeaGreen { get { return new Color(System.Drawing.Color.SeaGreen); } }
-        /// <summary>
-        /// The SeaShell color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color SeaShell { get { return new Color(System.Drawing.Color.SeaShell); } }
-        /// <summary>
-        /// The Sienna color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Sienna { get { return new Color(System.Drawing.Color.Sienna); } }
-        /// <summary>
-        /// The Silver color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Silver { get { return new Color(System.Drawing.Color.Silver); } }
-        /// <summary>
-        /// The SkyBlue color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color SkyBlue { get { return new Color(System.Drawing.Color.SkyBlue); } }
-        /// <summary>
-        /// The SlateBlue color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color SlateBlue { get { return new Color(System.Drawing.Color.SlateBlue); } }
-        /// <summary>
-        /// The SlateGray color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color SlateGray { get { return new Color(System.Drawing.Color.SlateGray); } }
-        /// <summary>
-        /// The Snow color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Snow { get { return new Color(System.Drawing.Color.Snow); } }
-        /// <summary>
-        /// The SpringGreen color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color SpringGreen { get { return new Color(System.Drawing.Color.SpringGreen); } }
-        /// <summary>
-        /// The SteelBlue color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color SteelBlue { get { return new Color(System.Drawing.Color.SteelBlue); } }
-        /// <summary>
-        /// The Tan color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Tan { get { return new Color(System.Drawing.Color.Tan); } }
-        /// <summary>
-        /// The Teal color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Teal { get { return new Color(System.Drawing.Color.Teal); } }
-        /// <summary>
-        /// The Thistle color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Thistle { get { return new Color(System.Drawing.Color.Thistle); } }
-        /// <summary>
-        /// The Tomato color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Tomato { get { return new Color(System.Drawing.Color.Tomato); } }
-        /// <summary>
-        /// The Transparent color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Transparent { get { return new Color(System.Drawing.Color.Transparent); } }
-        /// <summary>
-        /// The Turquoise color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Turquoise { get { return new Color(System.Drawing.Color.Turquoise); } }
-        /// <summary>
-        /// The Violet color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Violet { get { return new Color(System.Drawing.Color.Violet); } }
-        /// <summary>
-        /// The Wheat color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Wheat { get { return new Color(System.Drawing.Color.Wheat); } }
-        /// <summary>
-        /// The White color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color White { get { return new Color(System.Drawing.Color.White); } }
-        /// <summary>
-        /// The WhiteSmoke color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color WhiteSmoke { get { return new Color(System.Drawing.Color.WhiteSmoke); } }
-        /// <summary>
-        /// The Yellow color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color Yellow { get { return new Color(System.Drawing.Color.Yellow); } }
-        /// <summary>
-        /// The YellowGreen color.
-        /// </summary>
-        /// <returns>RL.Color</returns>
         public static Color YellowGreen { get { return new Color(System.Drawing.Color.YellowGreen); } }
 
         /// <summary>
