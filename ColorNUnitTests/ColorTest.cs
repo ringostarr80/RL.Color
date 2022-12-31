@@ -21,6 +21,14 @@ namespace ColorNUnitTests
         }
 
         [Test]
+        public void TestInvalidColorString()
+        {
+            Assert.Throws<System.InvalidCastException>(() => {
+                new Color("foo");
+            });
+        }
+
+        [Test]
         public void TestSystemColorConstructor()
         {
             var sysColor = new Color(System.Drawing.Color.Aqua);
@@ -307,6 +315,16 @@ namespace ColorNUnitTests
         }
 
         [Test]
+        public void TestColorReferenceEquals()
+        {
+            var whiteColor1 = new Color("white");
+            var whiteColor2 = whiteColor1;
+            Assert.AreEqual(whiteColor1, whiteColor2);
+            Assert.IsTrue(whiteColor1.Equals(whiteColor2));
+            Assert.IsTrue(whiteColor1 == whiteColor2);
+        }
+
+        [Test]
         public void TestColorNotEquals()
         {
             var whiteColor = new Color("white");
@@ -314,6 +332,24 @@ namespace ColorNUnitTests
             Assert.AreNotEqual(whiteColor, blackColor);
             Assert.IsFalse(whiteColor.Equals(blackColor));
             Assert.IsTrue(whiteColor != blackColor);
+        }
+
+        [Test]
+        public void TestColorNotEqualsWithNull()
+        {
+            var whiteColor1 = new Color("white");
+            Assert.AreNotEqual(whiteColor1, null);
+            Assert.IsFalse(whiteColor1.Equals(null));
+            Assert.IsFalse(whiteColor1 == null);
+        }
+
+        [Test]
+        public void TestColorNotEqualsWithDifferentType()
+        {
+            var whiteColor = new Color("white");
+            var isBool = true;
+            Assert.AreNotEqual(whiteColor, isBool);
+            Assert.IsFalse(whiteColor.Equals(isBool));
         }
 
         [Test]

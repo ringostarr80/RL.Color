@@ -9,6 +9,8 @@ namespace ColorNUnitTests
         [Test]
         public void TestStaticColors()
         {
+            Assert.AreEqual(new Color(0x00, 0x00, 0x00, 0x00), Color.Empty);
+
             Assert.AreEqual(new Color(0xFF, 0xF0, 0xF8, 0xFF), Color.AliceBlue);
             Assert.AreEqual(new Color(0xFF, 0xFA, 0xEB, 0xD7), Color.AntiqueWhite);
             Assert.AreEqual(new Color(0xFF, 0x00, 0xFF, 0xFF), Color.Aqua);
