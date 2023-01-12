@@ -29,6 +29,13 @@ namespace ColorNUnitTests
         }
 
         [Test]
+        public void TestGetHashCode()
+        {
+            var color = new Color("red");
+            Assert.AreEqual("System.Int32", color.GetHashCode().GetType().ToString());
+        }
+
+        [Test]
         public void TestSystemColorConstructor()
         {
             var sysColor = new Color(System.Drawing.Color.Aqua);
@@ -298,9 +305,11 @@ namespace ColorNUnitTests
         {
             var whiteColor = new Color("#FFFFFF");
             var randomColor = new Color("#ABCDEF");
-            var colorizedRedColor = whiteColor.Colorize("red");
+            var colorizedRedColor1 = whiteColor.Colorize("red");
+            var colorizedRedColor2 = whiteColor.Colorize(System.Drawing.Color.Red);
             var colorizedRandomColor = randomColor.Colorize("#FEDCBA");
-            Assert.AreEqual("#FF0000", colorizedRedColor.ToHEXString());
+            Assert.AreEqual("#FF0000", colorizedRedColor1.ToHEXString());
+            Assert.AreEqual("#FF0000", colorizedRedColor2.ToHEXString());
             Assert.AreEqual("#AAB1AE", colorizedRandomColor.ToHEXString());
         }
 
@@ -341,6 +350,7 @@ namespace ColorNUnitTests
             Assert.AreNotEqual(whiteColor1, null);
             Assert.IsFalse(whiteColor1.Equals(null));
             Assert.IsFalse(whiteColor1 == null);
+            Assert.IsFalse(null == whiteColor1);
         }
 
         [Test]
@@ -395,6 +405,40 @@ namespace ColorNUnitTests
             var color2 = new Color("#0000FF");
             var interpolated = color1.InterpolateHSV(color2, 0.5);
             Assert.AreEqual("#00FF00", interpolated.ToHEXString());
+        }
+
+        [Test]
+        public void TestFromARGB()
+        {
+            var color = Color.FromArgb(1000);
+            Assert.AreEqual("#000003E8", color.ToHEXString());
+        }
+
+        [Test]
+        public void TestFromARGBWithBaseColor()
+        {
+            var color1 = Color.FromArgb(100, System.Drawing.Color.AliceBlue);
+            Assert.AreEqual("#64F0F8FF", color1.ToHEXString());
+
+            var color2 = Color.FromArgb(100, Color.AliceBlue);
+            Assert.AreEqual("#64F0F8FF", color2.ToHEXString());
+        }
+
+        [Test]
+        public void TestFromARGBWithARGB()
+        {
+            var color1 = Color.FromArgb(255, 0, 0);
+            Assert.AreEqual("#FF0000", color1.ToHEXString());
+
+            var color2 = Color.FromArgb(100, 255, 0, 0);
+            Assert.AreEqual("#64FF0000", color2.ToHEXString());
+        }
+
+        [Test]
+        public void TestFromName()
+        {
+            var color1 = Color.FromName("red");
+            Assert.AreEqual("#FF0000", color1.ToHEXString());
         }
     }
 }
