@@ -27,6 +27,7 @@ jobs:
     - name: Test
       run: |
         dotnet test --no-build --verbosity normal --collect:"XPlat Code Coverage"
+        curl https://uploader.codecov.io/verification.gpg | gpg --no-default-keyring --keyring trustedkeys.gpg --import
         curl -Os https://uploader.codecov.io/latest/linux/codecov
         curl -Os https://uploader.codecov.io/latest/linux/codecov.SHA256SUM
         curl -Os https://uploader.codecov.io/latest/linux/codecov.SHA256SUM.sig
