@@ -347,7 +347,7 @@ namespace ColorNUnitTests
         public void TestColorNotEqualsWithNull()
         {
             var whiteColor1 = new Color("white");
-            Assert.AreNotEqual(whiteColor1, null);
+            Assert.NotNull(whiteColor1);
             Assert.IsFalse(whiteColor1.Equals(null));
             Assert.IsFalse(whiteColor1 == null);
             Assert.IsFalse(null == whiteColor1);

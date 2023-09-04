@@ -954,16 +954,8 @@ namespace RL
             if (h < 0.0 || h > 360.0) {
                 h = ((h % 360.0) + 360.0) % 360.0;
             }
-            if (s < 0.0) {
-                s = 0.0;
-            } else if (s > 1.0) {
-                s = 1.0;
-            }
-            if (v < 0.0) {
-                v = 0.0;
-            } else if (v > 1.0) {
-                v = 1.0;
-            }
+            s = Math.Max(0.0, Math.Min(1.0, s));
+            v = Math.Max(0.0, Math.Min(1.0, v));
 
             var c = v * s;
             var x = c * (1.0 - Math.Abs((h / 60.0) % 2.0 - 1.0));
@@ -1043,7 +1035,7 @@ namespace RL
                     h = 2.0 + (blue - red) / delta;
                 } else {
                     h = 4.0 + (red - green) / delta;
-                };
+                }
 
                 h *= 60.0;
                 if (h < 0.0) {
