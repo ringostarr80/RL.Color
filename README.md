@@ -5,7 +5,7 @@
 ![NuGet](https://img.shields.io/nuget/v/RL.Color)
 ![Version](https://img.shields.io/github/v/tag/ringostarr80/RL.Color?sort=semver)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=ringostarr80_RL.Color&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=ringostarr80_RL.Color)
-[![codecov](https://codecov.io/gh/ringostarr80/RL.Color/branch/main/graph/badge.svg?token=8X0W58THED)](https://codecov.io/gh/ringostarr80/RL.Color)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=ringostarr80_RL.Color&metric=coverage)](https://sonarcloud.io/summary/new_code?id=ringostarr80_RL.Color)
 
 ## Purpose
 

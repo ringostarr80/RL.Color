@@ -841,7 +841,12 @@ namespace RL
 
         private static bool TryParseHexColor(string hexColor, ref Color color)
         {
-            var colorHexMatch = Regex.Match(hexColor, "^#?([0-9A-Fa-f]{2})?([0-9A-Fa-f]{2})([0-9A-Fa-f]{2})([0-9A-Fa-f]{2})$", RegexOptions.Compiled);
+            var colorHexMatch = Regex.Match(
+                hexColor,
+                "^#?([0-9A-Fa-f]{2})?([0-9A-Fa-f]{2})([0-9A-Fa-f]{2})([0-9A-Fa-f]{2})$",
+                RegexOptions.Compiled,
+                TimeSpan.FromSeconds(5)
+            );
             if (!colorHexMatch.Success) {
                 return false;
             }
@@ -868,7 +873,12 @@ namespace RL
 
         private static bool TryParseRgbColor(string rgbColor, ref Color color)
         {
-            var colorRgbMatch = Regex.Match(rgbColor, @"\s*rgb\s*\(\s*([0-9]{1,3})\s*,\s*([0-9]{1,3})\s*,\s*([0-9]{1,3})\s*\)\s*", RegexOptions.Compiled);
+            var colorRgbMatch = Regex.Match(
+                rgbColor,
+                @"\s*rgb\s*\(\s*([0-9]{1,3})\s*,\s*([0-9]{1,3})\s*,\s*([0-9]{1,3})\s*\)\s*",
+                RegexOptions.Compiled,
+                TimeSpan.FromSeconds(5)
+            );
             if (!colorRgbMatch.Success) {
                 return false;
             }
@@ -889,7 +899,12 @@ namespace RL
 
         private static bool TryParseRgbaColor(string rgbaColor, ref Color color)
         {
-            var colorRgbaMatch = Regex.Match(rgbaColor, @"\s*rgba\s*\(\s*([0-9]{1,3})\s*,\s*([0-9]{1,3})\s*,\s*([0-9]{1,3})\s*,\s*([0-9]+(\.[0-9]+)?)\s*\)\s*", RegexOptions.Compiled);
+            var colorRgbaMatch = Regex.Match(
+                rgbaColor,
+                @"\s*rgba\s*\(\s*([0-9]{1,3})\s*,\s*([0-9]{1,3})\s*,\s*([0-9]{1,3})\s*,\s*([0-9]+(\.[0-9]+)?)\s*\)\s*",
+                RegexOptions.Compiled,
+                TimeSpan.FromSeconds(5)
+            );
             if (!colorRgbaMatch.Success) {
                 return false;
             }
@@ -912,7 +927,12 @@ namespace RL
 
         private static bool TryParseCmykColor(string cmykColor, ref Color color)
         {
-            var colorCmykMatch = Regex.Match(cmykColor, @"\s*cmyk\s*\(\s*([0-9]+(\.[0-9]+)?)\s*%?\s*,\s*([0-9]+(\.[0-9]+)?)\s*%?\s*,\s*([0-9]+(\.[0-9]+)?)\s*%?\s*,\s*([0-9]+(\.[0-9]+)?)\s*%?\s*\)\s*", RegexOptions.Compiled);
+            var colorCmykMatch = Regex.Match(
+                cmykColor,
+                @"\s*cmyk\s*\(\s*([0-9]+(\.[0-9]+)?)\s*%?\s*,\s*([0-9]+(\.[0-9]+)?)\s*%?\s*,\s*([0-9]+(\.[0-9]+)?)\s*%?\s*,\s*([0-9]+(\.[0-9]+)?)\s*%?\s*\)\s*",
+                RegexOptions.Compiled,
+                TimeSpan.FromSeconds(5)
+            );
             if (!colorCmykMatch.Success) {
                 return false;
             }
