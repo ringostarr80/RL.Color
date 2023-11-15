@@ -4,8 +4,8 @@
 
 | Version | Supported          |
 | ------- | ------------------ |
-| 0.2.x   | :heavy_check_mark: |
-| < 0.2   | :x:                |
+| 0.3.x   | :heavy_check_mark: |
+| < 0.3   | :x:                |
 
 ## Reporting a Vulnerability
 

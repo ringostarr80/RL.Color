@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning](http://semver.org/).
 
+## [0.3.1] - 2023-11-15
+### Changed
+- supported dotnet frameworks: .NET 6.0, .NET 7.0 and .NET 8.0
+
 ## [0.3.0] - 2022-12-24
 ### Added
 - CodeAnalysis
