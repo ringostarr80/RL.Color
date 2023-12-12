@@ -10,14 +10,14 @@ namespace ColorNUnitTests
         public void TestDefaultColor()
         {
             var defaultColor = new Color();
-            Assert.AreEqual(255, defaultColor.A);
-            Assert.AreEqual(0, defaultColor.R);
-            Assert.AreEqual(0, defaultColor.G);
-            Assert.AreEqual(0, defaultColor.B);
-            Assert.AreEqual(0.0, defaultColor.C);
-            Assert.AreEqual(0.0, defaultColor.M);
-            Assert.AreEqual(0.0, defaultColor.Y);
-            Assert.AreEqual(100.0, defaultColor.K);
+            Assert.That(defaultColor.A, Is.EqualTo(255));
+            Assert.That(defaultColor.R, Is.Zero);
+            Assert.That(defaultColor.G, Is.Zero);
+            Assert.That(defaultColor.B, Is.Zero);
+            Assert.That(defaultColor.C, Is.Zero);
+            Assert.That(defaultColor.M, Is.Zero);
+            Assert.That(defaultColor.Y, Is.Zero);
+            Assert.That(defaultColor.K, Is.EqualTo(100.0));
         }
 
         [Test]
@@ -32,205 +32,205 @@ namespace ColorNUnitTests
         public void TestGetHashCode()
         {
             var color = new Color("red");
-            Assert.AreEqual("System.Int32", color.GetHashCode().GetType().ToString());
+            Assert.That(color.GetHashCode().GetType().ToString(), Is.EqualTo("System.Int32"));
         }
 
         [Test]
         public void TestSystemColorConstructor()
         {
             var sysColor = new Color(System.Drawing.Color.Aqua);
-            Assert.AreEqual(255, sysColor.A);
-            Assert.AreEqual(0, sysColor.R);
-            Assert.AreEqual(255, sysColor.G);
-            Assert.AreEqual(255, sysColor.B);
+            Assert.That(sysColor.A, Is.EqualTo(255));
+            Assert.That(sysColor.R, Is.EqualTo(0));
+            Assert.That(sysColor.G, Is.EqualTo(255));
+            Assert.That(sysColor.B, Is.EqualTo(255));
         }
 
         [Test]
         public void TestRGBConstructor()
         {
             var redColor = new Color(255, 0, 0);
-            Assert.AreEqual(255, redColor.A);
-            Assert.AreEqual(255, redColor.R);
-            Assert.AreEqual(0, redColor.G);
-            Assert.AreEqual(0, redColor.B);
+            Assert.That(redColor.A, Is.EqualTo(255));
+            Assert.That(redColor.R, Is.EqualTo(255));
+            Assert.That(redColor.G, Is.EqualTo(0));
+            Assert.That(redColor.B, Is.EqualTo(0));
         }
 
         [Test]
         public void TestDefaultColorToHEXString()
         {
             var defaultColor = new Color();
-            Assert.AreEqual("#000000", defaultColor.ToHEXString());
+            Assert.That(defaultColor.ToHEXString(), Is.EqualTo("#000000"));
         }
 
         [Test]
         public void TestDefaultColorToRGBString()
         {
             var defaultColor = new Color();
-            Assert.AreEqual("rgb(0, 0, 0)", defaultColor.ToRGBString());
+            Assert.That(defaultColor.ToRGBString(), Is.EqualTo("rgb(0, 0, 0)"));
         }
 
         [Test]
         public void TestDefaultColorToRGBAString()
         {
             var defaultColor = new Color();
-            Assert.AreEqual("rgba(0, 0, 0, 1)", defaultColor.ToRGBAString());
+            Assert.That(defaultColor.ToRGBAString(), Is.EqualTo("rgba(0, 0, 0, 1)"));
         }
 
         [Test]
         public void TestDefaultColorToCMYKString()
         {
             var defaultColor = new Color();
-            Assert.AreEqual("cmyk(0%, 0%, 0%, 100%)", defaultColor.ToCMYKString());
+            Assert.That(defaultColor.ToCMYKString(), Is.EqualTo("cmyk(0%, 0%, 0%, 100%)"));
         }
 
         [Test]
         public void TestParseIntColor()
         {
             var intColor = new Color(unchecked((int)0xFF0000FF));
-            Assert.AreEqual(255, intColor.A);
-            Assert.AreEqual(0, intColor.R);
-            Assert.AreEqual(0, intColor.G);
-            Assert.AreEqual(255, intColor.B);
-            Assert.AreEqual(100.0, intColor.C);
-            Assert.AreEqual(100.0, intColor.M);
-            Assert.AreEqual(0.0, intColor.Y);
-            Assert.AreEqual(0.0, intColor.K);
+            Assert.That(intColor.A, Is.EqualTo(255));
+            Assert.That(intColor.R, Is.EqualTo(0));
+            Assert.That(intColor.G, Is.EqualTo(0));
+            Assert.That(intColor.B, Is.EqualTo(255));
+            Assert.That(intColor.C, Is.EqualTo(100));
+            Assert.That(intColor.M, Is.EqualTo(100));
+            Assert.That(intColor.Y, Is.EqualTo(0.0));
+            Assert.That(intColor.K, Is.EqualTo(0.0));
         }
 
         [Test]
         public void TestParseAlphaWithBaseColor()
         {
             var intColor = new Color(127, System.Drawing.Color.Red);
-            Assert.AreEqual(127, intColor.A);
-            Assert.AreEqual(255, intColor.R);
-            Assert.AreEqual(0, intColor.G);
-            Assert.AreEqual(0, intColor.B);
-            Assert.AreEqual(0.0, intColor.C);
-            Assert.AreEqual(100.0, intColor.M);
-            Assert.AreEqual(100.0, intColor.Y);
-            Assert.AreEqual(0.0, intColor.K);
+            Assert.That(intColor.A, Is.EqualTo(127));
+            Assert.That(intColor.R, Is.EqualTo(255));
+            Assert.That(intColor.G, Is.EqualTo(0));
+            Assert.That(intColor.B, Is.EqualTo(0));
+            Assert.That(intColor.C, Is.EqualTo(0.0));
+            Assert.That(intColor.M, Is.EqualTo(100.0));
+            Assert.That(intColor.Y, Is.EqualTo(100.0));
+            Assert.That(intColor.K, Is.EqualTo(0.0));
         }
 
         [Test]
         public void TestParseAlphaWithBaseColor2()
         {
             var intColor = new Color(127, new Color("red"));
-            Assert.AreEqual(127, intColor.A);
-            Assert.AreEqual(255, intColor.R);
-            Assert.AreEqual(0, intColor.G);
-            Assert.AreEqual(0, intColor.B);
-            Assert.AreEqual(0.0, intColor.C);
-            Assert.AreEqual(100.0, intColor.M);
-            Assert.AreEqual(100.0, intColor.Y);
-            Assert.AreEqual(0.0, intColor.K);
+            Assert.That(intColor.A, Is.EqualTo(127));
+            Assert.That(intColor.R, Is.EqualTo(255));
+            Assert.That(intColor.G, Is.EqualTo(0));
+            Assert.That(intColor.B, Is.EqualTo(0));
+            Assert.That(intColor.C, Is.EqualTo(0.0));
+            Assert.That(intColor.M, Is.EqualTo(100.0));
+            Assert.That(intColor.Y, Is.EqualTo(100.0));
+            Assert.That(intColor.K, Is.EqualTo(0.0));
         }
 
         [Test]
         public void TestParseHEXColor()
         {
             var hexColor = new Color("#123456");
-            Assert.AreEqual(255, hexColor.A);
-            Assert.AreEqual(18, hexColor.R);
-            Assert.AreEqual(52, hexColor.G);
-            Assert.AreEqual(86, hexColor.B);
-            Assert.AreEqual(79.069767441860478, hexColor.C);
-            Assert.AreEqual(39.534883720930253, hexColor.M);
-            Assert.AreEqual(0.0, hexColor.Y);
-            Assert.AreEqual(66.274509803921561, hexColor.K);
+            Assert.That(hexColor.A, Is.EqualTo(255));
+            Assert.That(hexColor.R, Is.EqualTo(18));
+            Assert.That(hexColor.G, Is.EqualTo(52));
+            Assert.That(hexColor.B, Is.EqualTo(86));
+            Assert.That(hexColor.C, Is.EqualTo(79.069767441860478));
+            Assert.That(hexColor.M, Is.EqualTo(39.534883720930253));
+            Assert.That(hexColor.Y, Is.EqualTo(0.0));
+            Assert.That(hexColor.K, Is.EqualTo(66.274509803921561));
         }
 
         [Test]
         public void TestParseHEXColorToHEXString()
         {
             var hexColor = new Color("#123456");
-            Assert.AreEqual("#123456", hexColor.ToHEXString());
+            Assert.That(hexColor.ToHEXString(), Is.EqualTo("#123456"));
         }
 
         [Test]
         public void TestParseHEXColorToRGBString()
         {
             var hexColor = new Color("#123456");
-            Assert.AreEqual("rgb(18, 52, 86)", hexColor.ToRGBString());
+            Assert.That(hexColor.ToRGBString(), Is.EqualTo("rgb(18, 52, 86)"));
         }
 
         [Test]
         public void TestParseHEXColorToRGBAString()
         {
             var hexColor = new Color("#123456");
-            Assert.AreEqual("rgba(18, 52, 86, 1)", hexColor.ToRGBAString());
+            Assert.That(hexColor.ToRGBAString(), Is.EqualTo("rgba(18, 52, 86, 1)"));
         }
 
         [Test]
         public void TestParseHEXColorToCMYKString()
         {
             var hexColor = new Color("#123456");
-            Assert.AreEqual("cmyk(79%, 40%, 0%, 66%)", hexColor.ToCMYKString());
+            Assert.That(hexColor.ToCMYKString(), Is.EqualTo("cmyk(79%, 40%, 0%, 66%)"));
         }
 
         [Test]
         public void TestParseHEXColorWithAlpha()
         {
             var hexColor = new Color("#aa123456");
-            Assert.AreEqual(170, hexColor.A);
-            Assert.AreEqual(18, hexColor.R);
-            Assert.AreEqual(52, hexColor.G);
-            Assert.AreEqual(86, hexColor.B);
-            Assert.AreEqual(79.069767441860478, hexColor.C);
-            Assert.AreEqual(39.534883720930253, hexColor.M);
-            Assert.AreEqual(0.0, hexColor.Y);
-            Assert.AreEqual(66.274509803921561, hexColor.K);
+            Assert.That(hexColor.A, Is.EqualTo(170));
+            Assert.That(hexColor.R, Is.EqualTo(18));
+            Assert.That(hexColor.G, Is.EqualTo(52));
+            Assert.That(hexColor.B, Is.EqualTo(86));
+            Assert.That(hexColor.C, Is.EqualTo(79.069767441860478));
+            Assert.That(hexColor.M, Is.EqualTo(39.534883720930253));
+            Assert.That(hexColor.Y, Is.EqualTo(0.0));
+            Assert.That(hexColor.K, Is.EqualTo(66.274509803921561));
         }
 
         [Test]
         public void TestParseHEXColorWithAlphaToHEXString()
         {
             var hexColor = new Color("#aa123456");
-            Assert.AreEqual("#AA123456", hexColor.ToHEXString());
+            Assert.That(hexColor.ToHEXString(), Is.EqualTo("#AA123456"));
         }
 
         [Test]
         public void TestParseHEXColorWithAlphaToRGBString()
         {
             var hexColor = new Color("#aa123456");
-            Assert.AreEqual("rgb(18, 52, 86)", hexColor.ToRGBString());
+            Assert.That(hexColor.ToRGBString(), Is.EqualTo("rgb(18, 52, 86)"));
         }
 
         [Test]
         public void TestParseHEXColorWithAlphaToRGBAString()
         {
             var hexColor = new Color("#aa123456");
-            Assert.AreEqual("rgba(18, 52, 86, 0.67)", hexColor.ToRGBAString());
+            Assert.That(hexColor.ToRGBAString(), Is.EqualTo("rgba(18, 52, 86, 0.67)"));
         }
 
         [Test]
         public void TestParseHEXColorWithAlphaToCMYKString()
         {
             var hexColor = new Color("#aa123456");
-            Assert.AreEqual("cmyk(79%, 40%, 0%, 66%)", hexColor.ToCMYKString());
+            Assert.That(hexColor.ToCMYKString(), Is.EqualTo("cmyk(79%, 40%, 0%, 66%)"));
         }
 
         [Test]
         public void TestParseRGBColor()
         {
             var rgbColor = new Color("rgb(255, 115, 0)");
-            Assert.AreEqual("#FF7300", rgbColor.ToHEXString());
+            Assert.That(rgbColor.ToHEXString(), Is.EqualTo("#FF7300"));
         }
 
         [Test]
         public void TestParseRGBAColor()
         {
             var rgbaColor = new Color("rgba(255, 115, 0, 0.5)");
-            Assert.AreEqual("#7FFF7300", rgbaColor.ToHEXString());
+            Assert.That(rgbaColor.ToHEXString(), Is.EqualTo("#7FFF7300"));
         }
 
         [Test]
         public void TestParseCMYKColor()
         {
             var cmykColor = new Color("cmyk(0%, 55%, 100%, 0%)");
-            Assert.AreEqual("#FF7300", cmykColor.ToHEXString());
+            Assert.That(cmykColor.ToHEXString(), Is.EqualTo("#FF7300"));
 
             var cmykColor2 = new Color("cmyk(0, 55, 100, 0)");
-            Assert.AreEqual("#FF7300", cmykColor2.ToHEXString());
+            Assert.That(cmykColor2.ToHEXString(), Is.EqualTo("#FF7300"));
         }
 
         [Test]
@@ -239,9 +239,9 @@ namespace ColorNUnitTests
             var whiteColor = new Color("WH");
             var blackColor = new Color("BK");
             var redColor = new Color("RD");
-            Assert.AreEqual("#FFFFFF", whiteColor.ToHEXString());
-            Assert.AreEqual("#000000", blackColor.ToHEXString());
-            Assert.AreEqual("#FF0000", redColor.ToHEXString());
+            Assert.That(whiteColor.ToHEXString(), Is.EqualTo("#FFFFFF"));
+            Assert.That(blackColor.ToHEXString(), Is.EqualTo("#000000"));
+            Assert.That(redColor.ToHEXString(), Is.EqualTo("#FF0000"));
         }
 
         [Test]
@@ -252,28 +252,28 @@ namespace ColorNUnitTests
             var redColor = new Color("red");
             var cyanColor = new Color("cyan");
             var magentaColor = new Color("magenta");
-            Assert.AreEqual("#FFFFFF", whiteColor.ToHEXString());
-            Assert.AreEqual("#000000", blackColor.ToHEXString());
-            Assert.AreEqual("#FF0000", redColor.ToHEXString());
-            Assert.AreEqual("#00FFFF", cyanColor.ToHEXString());
-            Assert.AreEqual("#FF00FF", magentaColor.ToHEXString());
+            Assert.That(whiteColor.ToHEXString(), Is.EqualTo("#FFFFFF"));
+            Assert.That(blackColor.ToHEXString(), Is.EqualTo("#000000"));
+            Assert.That(redColor.ToHEXString(), Is.EqualTo("#FF0000"));
+            Assert.That(cyanColor.ToHEXString(), Is.EqualTo("#00FFFF"));
+            Assert.That(magentaColor.ToHEXString(), Is.EqualTo("#FF00FF"));
         }
 
         [Test]
         public void TestColorReset()
         {
             var hexColor = new Color("#aa123456");
-            Assert.AreEqual(170, hexColor.A);
-            Assert.AreEqual(18, hexColor.R);
-            Assert.AreEqual(52, hexColor.G);
-            Assert.AreEqual(86, hexColor.B);
+            Assert.That(hexColor.A, Is.EqualTo(170));
+            Assert.That(hexColor.R, Is.EqualTo(18));
+            Assert.That(hexColor.G, Is.EqualTo(52));
+            Assert.That(hexColor.B, Is.EqualTo(86));
 
             hexColor.Reset();
 
-            Assert.AreEqual(255, hexColor.A);
-            Assert.AreEqual(0, hexColor.R);
-            Assert.AreEqual(0, hexColor.G);
-            Assert.AreEqual(0, hexColor.B);
+            Assert.That(hexColor.A, Is.EqualTo(255));
+            Assert.That(hexColor.R, Is.Zero);
+            Assert.That(hexColor.G, Is.Zero);
+            Assert.That(hexColor.B, Is.Zero);
         }
 
         [Test]
@@ -281,7 +281,7 @@ namespace ColorNUnitTests
         {
             var hexColor = new Color("#123456");
             var grayscale = hexColor.Grayscale();
-            Assert.AreEqual("#2D2D2D", grayscale.ToHEXString());
+            Assert.That(grayscale.ToHEXString(), Is.EqualTo("#2D2D2D"));
         }
 
         [Test]
@@ -289,7 +289,7 @@ namespace ColorNUnitTests
         {
             var hexColor = new Color("#123456");
             var invertedColor = hexColor.Invert();
-            Assert.AreEqual("#EDCBA9", invertedColor.ToHEXString());
+            Assert.That(invertedColor.ToHEXString(), Is.EqualTo("#EDCBA9"));
         }
 
         [Test]
@@ -297,7 +297,7 @@ namespace ColorNUnitTests
         {
             var hexColor = new Color("#123456");
             var invertedColor = hexColor.InvertLuminescence();
-            Assert.AreEqual("#A9CBED", invertedColor.ToHEXString());
+            Assert.That(invertedColor.ToHEXString(), Is.EqualTo("#A9CBED"));
         }
 
         [Test]
@@ -308,9 +308,9 @@ namespace ColorNUnitTests
             var colorizedRedColor1 = whiteColor.Colorize("red");
             var colorizedRedColor2 = whiteColor.Colorize(System.Drawing.Color.Red);
             var colorizedRandomColor = randomColor.Colorize("#FEDCBA");
-            Assert.AreEqual("#FF0000", colorizedRedColor1.ToHEXString());
-            Assert.AreEqual("#FF0000", colorizedRedColor2.ToHEXString());
-            Assert.AreEqual("#AAB1AE", colorizedRandomColor.ToHEXString());
+            Assert.That(colorizedRedColor1.ToHEXString(), Is.EqualTo("#FF0000"));
+            Assert.That(colorizedRedColor2.ToHEXString(), Is.EqualTo("#FF0000"));
+            Assert.That(colorizedRandomColor.ToHEXString(), Is.EqualTo("#AAB1AE"));
         }
 
         [Test]
@@ -318,9 +318,9 @@ namespace ColorNUnitTests
         {
             var whiteColor1 = new Color("white");
             var whiteColor2 = new Color("#FFFFFF");
-            Assert.AreEqual(whiteColor1, whiteColor2);
-            Assert.IsTrue(whiteColor1.Equals(whiteColor2));
-            Assert.IsTrue(whiteColor1 == whiteColor2);
+            Assert.That(whiteColor2, Is.EqualTo(whiteColor1));
+            Assert.That(whiteColor1.Equals(whiteColor2), Is.True);
+            Assert.That(whiteColor1 == whiteColor2, Is.True);
         }
 
         [Test]
@@ -328,9 +328,9 @@ namespace ColorNUnitTests
         {
             var whiteColor1 = new Color("white");
             var whiteColor2 = whiteColor1;
-            Assert.AreEqual(whiteColor1, whiteColor2);
-            Assert.IsTrue(whiteColor1.Equals(whiteColor2));
-            Assert.IsTrue(whiteColor1 == whiteColor2);
+            Assert.That(whiteColor2, Is.EqualTo(whiteColor1));
+            Assert.That(whiteColor1.Equals(whiteColor2), Is.True);
+            Assert.That(whiteColor1 == whiteColor2, Is.True);
         }
 
         [Test]
@@ -338,19 +338,19 @@ namespace ColorNUnitTests
         {
             var whiteColor = new Color("white");
             var blackColor = new Color("black");
-            Assert.AreNotEqual(whiteColor, blackColor);
-            Assert.IsFalse(whiteColor.Equals(blackColor));
-            Assert.IsTrue(whiteColor != blackColor);
+            Assert.That(blackColor, !Is.EqualTo(whiteColor));
+            Assert.That(whiteColor.Equals(blackColor), Is.False);
+            Assert.That(whiteColor != blackColor, Is.True);
         }
 
         [Test]
         public void TestColorNotEqualsWithNull()
         {
             var whiteColor1 = new Color("white");
-            Assert.NotNull(whiteColor1);
-            Assert.IsFalse(whiteColor1.Equals(null));
-            Assert.IsFalse(whiteColor1 == null);
-            Assert.IsFalse(null == whiteColor1);
+            Assert.That(whiteColor1, !Is.Null);
+            Assert.That(whiteColor1.Equals(null), Is.False);
+            Assert.That(whiteColor1 == null, Is.False);
+            Assert.That(null == whiteColor1, Is.False);
         }
 
         [Test]
@@ -358,8 +358,8 @@ namespace ColorNUnitTests
         {
             var whiteColor = new Color("white");
             var isBool = true;
-            Assert.AreNotEqual(whiteColor, isBool);
-            Assert.IsFalse(whiteColor.Equals(isBool));
+            Assert.That(whiteColor, !Is.EqualTo(isBool));
+            Assert.That(whiteColor.Equals(isBool), Is.False);
         }
 
         [Test]
@@ -368,7 +368,7 @@ namespace ColorNUnitTests
             var redColor = new Color("red");
             var greenColor = new Color("green");
             var addedColor = redColor + greenColor;
-            Assert.AreEqual("#FF8000", addedColor.ToHEXString());
+            Assert.That(addedColor.ToHEXString(), Is.EqualTo("#FF8000"));
         }
 
         [Test]
@@ -377,7 +377,7 @@ namespace ColorNUnitTests
             var redColor = new Color("red");
             var greenColor = new Color("#800000");
             var subtractedColor = redColor - greenColor;
-            Assert.AreEqual("#7F0000", subtractedColor.ToHEXString());
+            Assert.That(subtractedColor.ToHEXString(), Is.EqualTo("#7F0000"));
         }
 
         [Test]
@@ -385,8 +385,8 @@ namespace ColorNUnitTests
         {
             var redColor = new Color("red");
             var greenColor = new Color("#800000");
-            Assert.AreEqual("red", redColor.OriginalString);
-            Assert.AreEqual("#800000", greenColor.OriginalString);
+            Assert.That(redColor.OriginalString, Is.EqualTo("red"));
+            Assert.That(greenColor.OriginalString, Is.EqualTo("#800000"));
         }
 
         [Test]
@@ -395,7 +395,7 @@ namespace ColorNUnitTests
             var color1 = new Color("#FF0000");
             var color2 = new Color("#0000FF");
             var interpolated = color1.Interpolate(color2, 0.5);
-            Assert.AreEqual("#800080", interpolated.ToHEXString());
+            Assert.That(interpolated.ToHEXString(), Is.EqualTo("#800080"));
         }
 
         [Test]
@@ -404,41 +404,41 @@ namespace ColorNUnitTests
             var color1 = new Color("#FF0000");
             var color2 = new Color("#0000FF");
             var interpolated = color1.InterpolateHSV(color2, 0.5);
-            Assert.AreEqual("#00FF00", interpolated.ToHEXString());
+            Assert.That(interpolated.ToHEXString(), Is.EqualTo("#00FF00"));
         }
 
         [Test]
         public void TestFromARGB()
         {
             var color = Color.FromArgb(1000);
-            Assert.AreEqual("#000003E8", color.ToHEXString());
+            Assert.That(color.ToHEXString(), Is.EqualTo("#000003E8"));
         }
 
         [Test]
         public void TestFromARGBWithBaseColor()
         {
             var color1 = Color.FromArgb(100, System.Drawing.Color.AliceBlue);
-            Assert.AreEqual("#64F0F8FF", color1.ToHEXString());
+            Assert.That(color1.ToHEXString(), Is.EqualTo("#64F0F8FF"));
 
             var color2 = Color.FromArgb(100, Color.AliceBlue);
-            Assert.AreEqual("#64F0F8FF", color2.ToHEXString());
+            Assert.That(color2.ToHEXString(), Is.EqualTo("#64F0F8FF"));
         }
 
         [Test]
         public void TestFromARGBWithARGB()
         {
             var color1 = Color.FromArgb(255, 0, 0);
-            Assert.AreEqual("#FF0000", color1.ToHEXString());
+            Assert.That(color1.ToHEXString(), Is.EqualTo("#FF0000"));
 
             var color2 = Color.FromArgb(100, 255, 0, 0);
-            Assert.AreEqual("#64FF0000", color2.ToHEXString());
+            Assert.That(color2.ToHEXString(), Is.EqualTo("#64FF0000"));
         }
 
         [Test]
         public void TestFromName()
         {
             var color1 = Color.FromName("red");
-            Assert.AreEqual("#FF0000", color1.ToHEXString());
+            Assert.That(color1.ToHEXString(), Is.EqualTo("#FF0000"));
         }
     }
 }
