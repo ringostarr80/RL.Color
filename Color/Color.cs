@@ -1375,7 +1375,7 @@ namespace RL
         {
             this.GetHSLValue(out double h, out double s, out double l);
             var newColor = new Color();
-            newColor.SetHSLValue(h, s, Math.Max(0.0, l - amount));
+            newColor.SetHSLValue(h, s, Math.Min(1.0, Math.Max(0.0, l - amount)));
             newColor.A = this.A;
             return newColor;
             /*
