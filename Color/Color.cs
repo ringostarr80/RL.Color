@@ -10,6 +10,18 @@ namespace RL
     /// </summary>
     public class Color
     {
+        private const double LAB_CONSTANT_KN = 18.0; // Corresponds roughly to RGB brighter/darker
+
+        // D65 standard referent
+        private const double LAB_CONSTANT_XN = 0.950470;
+        private const double LAB_CONSTANT_YN = 1.0;
+        private const double LAB_CONSTANT_ZN = 1.088830;
+
+        private const double LAB_CONSTANT_T0 = 0.137931034; // 4 / 29
+        private const double LAB_CONSTANT_T1 = 0.206896552; // 6 / 29
+        private const double LAB_CONSTANT_T2 = 0.12841855; // 3 * t1 * t1
+        private const double LAB_CONSTANT_T3 = 0.008856452; // t1 * t1 * t1
+
         private static readonly Dictionary<string, byte[]> abbreviations = new() {
             {"AQ", new byte[3] {0x00, 0xFF, 0xFF}},
             {"BK", new byte[3] {0x00, 0x00, 0x00}},
@@ -589,6 +601,69 @@ namespace RL
             throw new InvalidCastException("Could not parse string-color: '" + stringColor + "'.");
         }
 
+        public static double XYZ_LAB(double t)
+        {
+            if (t > LAB_CONSTANT_T3)
+            {
+                return Math.Pow(t, 1 / 3);
+            }
+            return t / LAB_CONSTANT_T2 + LAB_CONSTANT_T0;
+        }
+
+        public static double LAB_XYZ(double t)
+        {
+            return t > LAB_CONSTANT_T1 ? t * t * t : LAB_CONSTANT_T2 * (t - LAB_CONSTANT_T0);
+        }
+
+        public static double RGB_XYZ(double r)
+        {
+            if ((r /= 255) <= 0.04045)
+            {
+                return r / 12.92;
+            }
+            return Math.Pow((r + 0.055) / 1.055, 2.4);
+        }
+
+        public static double XYZ_RGB(double r)
+        {
+            return 255 * (r <= 0.00304 ? 12.92 * r : 1.055 * Math.Pow(r, 1 / 2.4) - 0.055);
+        }
+
+        public static (double x, double y, double z) RGB2XYZ(double r, double g, double b)
+        {
+            r = RGB_XYZ(r);
+            g = RGB_XYZ(g);
+            b = RGB_XYZ(b);
+            var x = XYZ_LAB((0.4124564 * r + 0.3575761 * g + 0.1804375 * b) / LAB_CONSTANT_XN);
+            var y = XYZ_LAB((0.2126729 * r + 0.7151522 * g + 0.0721750 * b) / LAB_CONSTANT_YN);
+            var z = XYZ_LAB((0.0193339 * r + 0.1191920 * g + 0.9503041 * b) / LAB_CONSTANT_ZN);
+            return (x, y, z);
+        }
+
+        public static (double r, double g, double b) LAB2RGB((double l, double a, double b) lab)
+        {
+            var y = (lab.l + 16) / 116;
+            var x = double.IsNaN(lab.a) ? y : y + lab.a / 500;
+            var z = double.IsNaN(lab.b) ? y : y - lab.b / 200;
+
+            y = LAB_CONSTANT_YN * LAB_XYZ(y);
+            x = LAB_CONSTANT_XN * LAB_XYZ(x);
+            z = LAB_CONSTANT_ZN * LAB_XYZ(z);
+
+            var r = XYZ_RGB(3.2404542 * x - 1.5371385 * y - 0.4985314 * z);  // D65 -> sRGB
+            var g = XYZ_RGB(-0.9692660 * x + 1.8760108 * y + 0.0415560 * z);
+            var b_ = XYZ_RGB(0.0556434 * x - 0.2040259 * y + 1.0572252 * z);
+
+            return (r, g, b_);
+        }
+
+        public static (double l, double a, double b) RGB2LAB((double r, double g, double b) rgb)
+        {
+            var xyz = RGB2XYZ(rgb.r, rgb.g, rgb.b);
+            var l = 116 * xyz.y - 16;
+            return (l < 0 ? 0 : l, 500 * (xyz.x - xyz.y), 200 * (xyz.y - xyz.z));
+        }
+
         /// <summary>
         /// Compares 2 colors and returns true, if they are equal.
         /// </summary>
@@ -1066,6 +1141,13 @@ namespace RL
             return new double[] { h, s, v, alpha };
         }
 
+        private (double l, double a, double b) GetLABValue()
+        {
+            var xyz = RGB2XYZ(this.R, this.G, this.B);
+            var l = 116 * xyz.y - 16;
+            return (l < 0 ? 0 : l, 500 * (xyz.x - xyz.y), 200 * (xyz.y - xyz.z));
+        }
+
         private void GetHSLValue(out double h, out double s, out double l) {
             h = 0.0;
             s = 0.0;
@@ -1272,6 +1354,38 @@ namespace RL
         public Color Colorize(string color)
         {
             return this.Colorize(new Color(color));
+        }
+
+        /// <summary>
+        /// Brightens the current color and returns a new instance.
+        /// </summary>
+        /// <param name="amount">The amount value</param>
+        /// <returns>A new RL.Color instance.</returns>
+        public Color Brighten(double amount = 1.0)
+        {
+            return this.Darken(-amount);
+        }
+
+        /// <summary>
+        /// Darkens the current color and returns a new instance.
+        /// </summary>
+        /// <param name="amount">The amount value</param>
+        /// <returns>A new RL.Color instance.</returns>
+        public Color Darken(double amount = 1.0)
+        {
+            this.GetHSLValue(out double h, out double s, out double l);
+            var newColor = new Color();
+            newColor.SetHSLValue(h, s, Math.Max(0.0, l - amount));
+            newColor.A = this.A;
+            return newColor;
+            /*
+            var lab = RGB2LAB((this.R, this.G, this.B));
+            lab.l -= LAB_CONSTANT_KN * amount;
+
+            var rgb = LAB2RGB(lab);
+
+            return new Color(this.A, (int)rgb.r, (int)rgb.g, (int)rgb.b);
+            */
         }
     }
 }
