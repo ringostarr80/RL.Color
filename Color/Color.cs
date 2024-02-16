@@ -18,7 +18,7 @@ namespace RL
         private const double LAB_CONSTANT_ZN = 1.088830;
 
         private const double LAB_CONSTANT_T0 = 0.137931034; // 4 / 29
-        private const double LAB_CONSTANT_T1 = 0.206896552; // 6 / 29
+        // private const double LAB_CONSTANT_T1 = 0.206896552; // 6 / 29
         private const double LAB_CONSTANT_T2 = 0.12841855; // 3 * t1 * t1
         private const double LAB_CONSTANT_T3 = 0.008856452; // t1 * t1 * t1
 
@@ -1193,11 +1193,7 @@ namespace RL
             t3[1] = h;
             t3[2] = h - 1.0 / 3.0;
             for(var i = 0; i < 3; i++) {
-                if (t3[i] < 0.0) {
-                    t3[i]+= 1.0;
-                } else if (t3[i] > 1.0) {
-                    t3[i]-= 1.0;
-                }
+                t3[i] = t3[i] < 0.0 ? t3[i] + 1.0 : (t3[i] > 1.0 ? t3[i] - 1.0 : t3[i]);
 
                 if (6.0 * t3[i] < 1.0) {
                     c[i] = t1 + (t2 - t1) * 6.0 * t3[i];
