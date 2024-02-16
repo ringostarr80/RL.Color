@@ -1200,13 +1200,13 @@ namespace RL
 
         private void SetHSLValue(double h, double s, double l) {
             if (h < 0.0 || h > 360.0) {
-                throw new ArgumentException("The argument for h[hue] (" + h + ") is out of range. It must be between 0.0 and 360.0.", nameof(h));
+                throw new ArgumentException($"The argument for h[hue] ({h}) is out of range. It must be between 0.0 and 360.0.", nameof(h));
             }
             if (s < 0.0 || s > 1.0) {
-                throw new ArgumentException("The argument for s[saturation] (" + s + ") is out of range. It must be between 0.0 and 1.0.", nameof(s));
+                throw new ArgumentException($"The argument for s[saturation] ({s}) is out of range. It must be between 0.0 and 1.0.", nameof(s));
             }
             if (l < 0.0 || l > 1.0) {
-                throw new ArgumentException("The argument for l[lightness] (" + l + ") is out of range. It must be between 0.0 and 1.0.", nameof(l));
+                throw new ArgumentException($"The argument for l[lightness] ({l}) is out of range. It must be between 0.0 and 1.0.", nameof(l));
             }
 
             this.Reset();
@@ -1215,37 +1215,38 @@ namespace RL
                 this.R = (byte)Math.Round(l * 255.0);
                 this.G = (byte)Math.Round(l * 255.0);
                 this.B = (byte)Math.Round(l * 255.0);
-            } else {
-                var t3 = new double[3] { 0, 0, 0 };
-                var c = new double[3] { 0, 0, 0 };
-                var t2 = (l < 0.5) ? l * (1.0 + s) : l + s - l * s;
-                var t1 = 2.0 * l - t2;
-                h/= 360.0;
-                t3[0] = h + 1.0 / 3.0;
-                t3[1] = h;
-                t3[2] = h - 1.0 / 3.0;
-                for(var i = 0; i < 3; i++) {
-                    if (t3[i] < 0.0) {
-                        t3[i]+= 1.0;
-                    }
-                    if (t3[i] > 1.0) {
-                        t3[i]-= 1.0;
-                    }
-                    if (6.0 * t3[i] < 1.0) {
-                        c[i] = t1 + (t2 - t1) * 6.0 * t3[i];
-                    } else if (2.0 * t3[i] < 1.0) {
-                        c[i] = t2;
-                    } else if (3.0 * t3[i] < 2.0) {
-                        c[i] = t1 + (t2 - t1) * ((2.0 / 3.0) - t3[i]) * 6.0;
-                    } else {
-                        c[i] = t1;
-                    }
+                return;
+            }
+
+            var t3 = new double[3] { 0, 0, 0 };
+            var c = new double[3] { 0, 0, 0 };
+            var t2 = (l < 0.5) ? l * (1.0 + s) : l + s - l * s;
+            var t1 = 2.0 * l - t2;
+            h/= 360.0;
+            t3[0] = h + 1.0 / 3.0;
+            t3[1] = h;
+            t3[2] = h - 1.0 / 3.0;
+            for(var i = 0; i < 3; i++) {
+                if (t3[i] < 0.0) {
+                    t3[i]+= 1.0;
+                } else if (t3[i] > 1.0) {
+                    t3[i]-= 1.0;
                 }
 
-                this.R = (byte)Math.Round(c[0] * 255.0);
-                this.G = (byte)Math.Round(c[1] * 255.0);
-                this.B = (byte)Math.Round(c[2] * 255.0);
+                if (6.0 * t3[i] < 1.0) {
+                    c[i] = t1 + (t2 - t1) * 6.0 * t3[i];
+                } else if (2.0 * t3[i] < 1.0) {
+                    c[i] = t2;
+                } else if (3.0 * t3[i] < 2.0) {
+                    c[i] = t1 + (t2 - t1) * ((2.0 / 3.0) - t3[i]) * 6.0;
+                } else {
+                    c[i] = t1;
+                }
             }
+
+            this.R = (byte)Math.Round(c[0] * 255.0);
+            this.G = (byte)Math.Round(c[1] * 255.0);
+            this.B = (byte)Math.Round(c[2] * 255.0);
         }
 
         /// <summary>
