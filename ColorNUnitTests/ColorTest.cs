@@ -441,24 +441,22 @@ namespace ColorNUnitTests
             Assert.That(color1.ToHEXString(), Is.EqualTo("#FF0000"));
         }
 
-        /*
-        [Test]
-        public void TestRGB2LAB()
-        {
-            Assert.That(Color.RGB2LAB((0, 0, 0)), Is.EqualTo((0, 0, 0)));
-            Assert.That(Color.RGB2LAB((255, 255, 255)), Is.EqualTo((100, 0, 0)));
-            Assert.That(Color.RGB2LAB((128, 128, 128)), Is.EqualTo((53.59, 0, 0)));
-        }
-        */
-
-        /*
         [Test]
         public void TestDarken()
         {
-            var red = Color.FromName("red");
-            var darkenedRed = red.Darken(0.1);
-            Assert.That(darkenedRed.ToHEXString(), Is.EqualTo("#C20000"));
+            var white = Color.White;
+            var darkenedWhite = white.Darken(0.5);
+
+            Assert.That(darkenedWhite, Is.EqualTo(new Color(128, 128, 128)));
         }
-        //*/
+
+        [Test]
+        public void TestBrighten()
+        {
+            var black = Color.Black;
+            var brightenedBlack = black.Brighten(0.5);
+
+            Assert.That(brightenedBlack, Is.EqualTo(new Color(128, 128, 128)));
+        }
     }
 }
