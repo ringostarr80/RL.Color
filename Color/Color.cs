@@ -610,11 +610,6 @@ namespace RL
             return t / LAB_CONSTANT_T2 + LAB_CONSTANT_T0;
         }
 
-        public static double LAB_XYZ(double t)
-        {
-            return t > LAB_CONSTANT_T1 ? t * t * t : LAB_CONSTANT_T2 * (t - LAB_CONSTANT_T0);
-        }
-
         public static double RGB_XYZ(double r)
         {
             if ((r /= 255) <= 0.04045)
@@ -622,11 +617,6 @@ namespace RL
                 return r / 12.92;
             }
             return Math.Pow((r + 0.055) / 1.055, 2.4);
-        }
-
-        public static double XYZ_RGB(double r)
-        {
-            return 255 * (r <= 0.00304 ? 12.92 * r : 1.055 * Math.Pow(r, 1 / 2.4) - 0.055);
         }
 
         public static (double x, double y, double z) RGB2XYZ(double r, double g, double b)
@@ -638,30 +628,6 @@ namespace RL
             var y = XYZ_LAB((0.2126729 * r + 0.7151522 * g + 0.0721750 * b) / LAB_CONSTANT_YN);
             var z = XYZ_LAB((0.0193339 * r + 0.1191920 * g + 0.9503041 * b) / LAB_CONSTANT_ZN);
             return (x, y, z);
-        }
-
-        public static (double r, double g, double b) LAB2RGB((double l, double a, double b) lab)
-        {
-            var y = (lab.l + 16) / 116;
-            var x = double.IsNaN(lab.a) ? y : y + lab.a / 500;
-            var z = double.IsNaN(lab.b) ? y : y - lab.b / 200;
-
-            y = LAB_CONSTANT_YN * LAB_XYZ(y);
-            x = LAB_CONSTANT_XN * LAB_XYZ(x);
-            z = LAB_CONSTANT_ZN * LAB_XYZ(z);
-
-            var r = XYZ_RGB(3.2404542 * x - 1.5371385 * y - 0.4985314 * z);  // D65 -> sRGB
-            var g = XYZ_RGB(-0.9692660 * x + 1.8760108 * y + 0.0415560 * z);
-            var b_ = XYZ_RGB(0.0556434 * x - 0.2040259 * y + 1.0572252 * z);
-
-            return (r, g, b_);
-        }
-
-        public static (double l, double a, double b) RGB2LAB((double r, double g, double b) rgb)
-        {
-            var (x, y, z) = RGB2XYZ(rgb.r, rgb.g, rgb.b);
-            var l = 116 * y - 16;
-            return (l < 0 ? 0 : l, 500 * (x - y), 200 * (y - z));
         }
 
         /// <summary>
