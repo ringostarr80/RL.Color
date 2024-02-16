@@ -10,7 +10,7 @@ namespace RL
     /// </summary>
     public class Color
     {
-        private const double LAB_CONSTANT_KN = 18.0; // Corresponds roughly to RGB brighter/darker
+        // private const double LAB_CONSTANT_KN = 18.0; // Corresponds roughly to RGB brighter/darker
 
         // D65 standard referent
         private const double LAB_CONSTANT_XN = 0.950470;
@@ -605,7 +605,7 @@ namespace RL
         {
             if (t > LAB_CONSTANT_T3)
             {
-                return Math.Pow(t, 1 / 3);
+                return Math.Pow(t, 1.0 / 3.0);
             }
             return t / LAB_CONSTANT_T2 + LAB_CONSTANT_T0;
         }
@@ -659,9 +659,9 @@ namespace RL
 
         public static (double l, double a, double b) RGB2LAB((double r, double g, double b) rgb)
         {
-            var xyz = RGB2XYZ(rgb.r, rgb.g, rgb.b);
-            var l = 116 * xyz.y - 16;
-            return (l < 0 ? 0 : l, 500 * (xyz.x - xyz.y), 200 * (xyz.y - xyz.z));
+            var (x, y, z) = RGB2XYZ(rgb.r, rgb.g, rgb.b);
+            var l = 116 * y - 16;
+            return (l < 0 ? 0 : l, 500 * (x - y), 200 * (y - z));
         }
 
         /// <summary>
@@ -1141,11 +1141,11 @@ namespace RL
             return new double[] { h, s, v, alpha };
         }
 
-        private (double l, double a, double b) GetLABValue()
+        public (double l, double a, double b) GetLABValue()
         {
-            var xyz = RGB2XYZ(this.R, this.G, this.B);
-            var l = 116 * xyz.y - 16;
-            return (l < 0 ? 0 : l, 500 * (xyz.x - xyz.y), 200 * (xyz.y - xyz.z));
+            var (x, y, z) = RGB2XYZ(this.R, this.G, this.B);
+            var l = 116 * y - 16;
+            return (l < 0 ? 0 : l, 500 * (x - y), 200 * (y - z));
         }
 
         private void GetHSLValue(out double h, out double s, out double l) {
@@ -1378,14 +1378,6 @@ namespace RL
             newColor.SetHSLValue(h, s, Math.Min(1.0, Math.Max(0.0, l - amount)));
             newColor.A = this.A;
             return newColor;
-            /*
-            var lab = RGB2LAB((this.R, this.G, this.B));
-            lab.l -= LAB_CONSTANT_KN * amount;
-
-            var rgb = LAB2RGB(lab);
-
-            return new Color(this.A, (int)rgb.r, (int)rgb.g, (int)rgb.b);
-            */
         }
     }
 }
