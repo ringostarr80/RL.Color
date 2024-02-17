@@ -13,14 +13,14 @@ namespace RL
         // private const double LAB_CONSTANT_KN = 18.0; // Corresponds roughly to RGB brighter/darker
 
         // D65 standard referent
-        private const double LAB_CONSTANT_XN = 0.950470;
-        private const double LAB_CONSTANT_YN = 1.0;
-        private const double LAB_CONSTANT_ZN = 1.088830;
+        // private const double LAB_CONSTANT_XN = 0.950470;
+        // private const double LAB_CONSTANT_YN = 1.0;
+        // private const double LAB_CONSTANT_ZN = 1.088830;
 
-        private const double LAB_CONSTANT_T0 = 0.137931034; // 4 / 29
+        // private const double LAB_CONSTANT_T0 = 0.137931034; // 4 / 29
         // private const double LAB_CONSTANT_T1 = 0.206896552; // 6 / 29
-        private const double LAB_CONSTANT_T2 = 0.12841855; // 3 * t1 * t1
-        private const double LAB_CONSTANT_T3 = 0.008856452; // t1 * t1 * t1
+        // private const double LAB_CONSTANT_T2 = 0.12841855; // 3 * t1 * t1
+        // private const double LAB_CONSTANT_T3 = 0.008856452; // t1 * t1 * t1
 
         private static readonly Dictionary<string, byte[]> abbreviations = new() {
             {"AQ", new byte[3] {0x00, 0xFF, 0xFF}},
