@@ -601,35 +601,6 @@ namespace RL
             throw new InvalidCastException("Could not parse string-color: '" + stringColor + "'.");
         }
 
-        public static double XYZ_LAB(double t)
-        {
-            if (t > LAB_CONSTANT_T3)
-            {
-                return Math.Pow(t, 1.0 / 3.0);
-            }
-            return t / LAB_CONSTANT_T2 + LAB_CONSTANT_T0;
-        }
-
-        public static double RGB_XYZ(double r)
-        {
-            if ((r /= 255) <= 0.04045)
-            {
-                return r / 12.92;
-            }
-            return Math.Pow((r + 0.055) / 1.055, 2.4);
-        }
-
-        public static (double x, double y, double z) RGB2XYZ(double r, double g, double b)
-        {
-            r = RGB_XYZ(r);
-            g = RGB_XYZ(g);
-            b = RGB_XYZ(b);
-            var x = XYZ_LAB((0.4124564 * r + 0.3575761 * g + 0.1804375 * b) / LAB_CONSTANT_XN);
-            var y = XYZ_LAB((0.2126729 * r + 0.7151522 * g + 0.0721750 * b) / LAB_CONSTANT_YN);
-            var z = XYZ_LAB((0.0193339 * r + 0.1191920 * g + 0.9503041 * b) / LAB_CONSTANT_ZN);
-            return (x, y, z);
-        }
-
         /// <summary>
         /// Compares 2 colors and returns true, if they are equal.
         /// </summary>
@@ -1105,13 +1076,6 @@ namespace RL
             }
 
             return new double[] { h, s, v, alpha };
-        }
-
-        public (double l, double a, double b) GetLABValue()
-        {
-            var (x, y, z) = RGB2XYZ(this.R, this.G, this.B);
-            var l = 116 * y - 16;
-            return (l < 0 ? 0 : l, 500 * (x - y), 200 * (y - z));
         }
 
         private void GetHSLValue(out double h, out double s, out double l) {
