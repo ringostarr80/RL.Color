@@ -1117,15 +1117,9 @@ namespace RL
         }
 
         private void SetHSLValue(double h, double s, double l) {
-            if (h < 0.0 || h > 360.0) {
-                throw new ArgumentException($"The argument for h[hue] ({h}) is out of range. It must be between 0.0 and 360.0.", nameof(h));
-            }
-            if (s < 0.0 || s > 1.0) {
-                throw new ArgumentException($"The argument for s[saturation] ({s}) is out of range. It must be between 0.0 and 1.0.", nameof(s));
-            }
-            if (l < 0.0 || l > 1.0) {
-                throw new ArgumentException($"The argument for l[lightness] ({l}) is out of range. It must be between 0.0 and 1.0.", nameof(l));
-            }
+            h.RangeCheck(0.0, 360.0, nameof(h));
+            s.RangeCheck(0.0, 1.0, nameof(s));
+            l.RangeCheck(0.0, 1.0, nameof(l));
 
             this.Reset();
 
@@ -1145,7 +1139,11 @@ namespace RL
             t3[1] = h;
             t3[2] = h - 1.0 / 3.0;
             for(var i = 0; i < 3; i++) {
-                t3[i] = t3[i] < 0.0 ? t3[i] + 1.0 : (t3[i] > 1.0 ? t3[i] - 1.0 : t3[i]);
+                if (t3[i] < 0.0) {
+                    t3[i]+= 1.0;
+                } else if (t3[i] > 1.0) {
+                    t3[i]-= 1.0;
+                }
 
                 if (6.0 * t3[i] < 1.0) {
                     c[i] = t1 + (t2 - t1) * 6.0 * t3[i];
