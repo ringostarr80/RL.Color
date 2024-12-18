@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFrameworks>net6.0;net7.0;net8.0</TargetFrameworks>
+    <TargetFrameworks>net6.0;net7.0;net8.0;net9.0</TargetFrameworks>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
     <IncludeSymbols>true</IncludeSymbols>
@@ -15,7 +15,7 @@
     <Owners>Ringo Leese</Owners>
     <PackageProjectUrl>https://github.com/ringostarr80/RL.Color</PackageProjectUrl>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageReleaseNotes>changed target framework to .NET 6.0 - .NET 8.0</PackageReleaseNotes>
+    <PackageReleaseNotes>changed target framework to .NET 6.0 - .NET 9.0</PackageReleaseNotes>
     <Description>This is a replacement class for the System.Drawing.Color-structure</Description>
     <PackageTags>color;manipulation</PackageTags>
     <Copyright>Copyright 2023</Copyright>
@@ -30,5 +30,6 @@
     <DocumentationFile>bin/Release/net6.0/Color.xml</DocumentationFile>
     <DocumentationFile>bin/Release/net7.0/Color.xml</DocumentationFile>
     <DocumentationFile>bin/Release/net8.0/Color.xml</DocumentationFile>
+    <DocumentationFile>bin/Release/net9.0/Color.xml</DocumentationFile>
   </PropertyGroup>
 </Project>
