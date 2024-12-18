@@ -1,4 +1,4 @@
-name: .NET Build & Tests
+name: .NET Build & Test
 
 on:
   push:
