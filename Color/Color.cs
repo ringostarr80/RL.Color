@@ -984,7 +984,7 @@ namespace RL
             var r1 = 0.0;
             var g1 = 0.0;
             var b1 = 0.0;
-            if ((h >= 0.0 && h < 60.0) || h == 360.0) {
+            if ((h >= 0.0 && h < 60.0) || Math.Abs(h - 360.0) < double.Epsilon) {
                 r1 = c;
                 g1 = x;
             } else if (h >= 60.0 && h < 120.0) {
@@ -1040,7 +1040,7 @@ namespace RL
                 max = blue;
             }
 
-            if (max == 0.0) {
+            if (Math.Abs(max) < double.Epsilon) {
                 return new double[] { 0.0, 0.0, 0.0, alpha };
             }
 
@@ -1048,10 +1048,10 @@ namespace RL
             var delta = max - min;
             var s = delta / max;
             var h = 0.0;
-            if (delta != 0.0) {
-                if (red == max) {
+            if (Math.Abs(delta) > double.Epsilon) {
+                if (Math.Abs(red - max) < double.Epsilon) {
                     h = (green - blue) / delta;
-                } else if (green == max) {
+                } else if (Math.Abs(green - max) < double.Epsilon) {
                     h = 2.0 + (blue - red) / delta;
                 } else {
                     h = 4.0 + (red - green) / delta;
@@ -1098,15 +1098,15 @@ namespace RL
 
             l = (max + min) / 2.0;
 
-            if (max != min) {
+            if (Math.Abs(max - min) > double.Epsilon) {
                 s = (l < 0.5) ? (max - min) / (max + min) : (max - min) / (2.0 - max - min);
             }
 
-            if (red == max) {
+            if (Math.Abs(red - max) < double.Epsilon) {
                 h = (green - blue) / (max - min);
-            } else if (green == max) {
+            } else if (Math.Abs(green - max) < double.Epsilon) {
                 h = 2.0 + (blue - red) / (max - min);
-            } else if (blue == max) {
+            } else if (Math.Abs(blue - max) < double.Epsilon) {
                 h = 4.0 + (red - green) / (max - min);
             }
 
@@ -1123,7 +1123,7 @@ namespace RL
 
             this.Reset();
 
-            if (s == 0) {
+            if (Math.Abs(s) < double.Epsilon) {
                 this.R = (byte)Math.Round(l * 255.0);
                 this.G = (byte)Math.Round(l * 255.0);
                 this.B = (byte)Math.Round(l * 255.0);
