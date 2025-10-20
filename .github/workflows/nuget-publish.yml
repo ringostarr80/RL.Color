@@ -20,7 +20,7 @@ jobs:
       run: echo "PACKAGE_VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_ENV
 
     - name: Setup .NET
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@d4c94342e560b34958eacfc5d055d21461ed1c5d # v5
       with:
         dotnet-version: 8.0.x
 
@@ -37,4 +37,6 @@ jobs:
       run: dotnet pack -c Release -o out -p:Version=$PACKAGE_VERSION -p:ContinuousIntegrationBuild=true
 
     - name: Publish to NuGet
-      run: dotnet nuget push out/*.nupkg -k ${{secrets.NUGET_API_KEY}} -s https://api.nuget.org/v3/index.json
+      env:
+        NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+      run: dotnet nuget push out/*.nupkg -k $NUGET_API_KEY -s https://api.nuget.org/v3/index.json
