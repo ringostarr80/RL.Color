@@ -17,18 +17,17 @@ jobs:
 
     strategy:
       matrix:
-        dotnet: [ '6.0', '7.0', '8.0', '9.0' ]
+        dotnet: [ '8.0', '9.0', '10.0' ]
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
     - name: Setup .NET
       uses: actions/setup-dotnet@d4c94342e560b34958eacfc5d055d21461ed1c5d # v5
       with:
         dotnet-version: |
-          6.0.x
-          7.0.x
           8.0.x
           9.0.x
+          10.0.x
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
@@ -37,7 +36,7 @@ jobs:
       run: |
         dotnet test --framework=net${{ matrix.dotnet }} --no-build --verbosity normal --collect:"XPlat Code Coverage"
     - name: Upload coverage reports to Codecov
-      if: ${{ matrix.dotnet == '8.0' }}
+      if: ${{ matrix.dotnet == '10.0' }}
       uses: codecov/codecov-action@5a1091511ad55cbe89839c7260b706298ca349f7 # v5.5.1
       env:
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
