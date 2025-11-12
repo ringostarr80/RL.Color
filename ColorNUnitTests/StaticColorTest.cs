@@ -120,7 +120,7 @@ namespace ColorNUnitTests
             Assert.That(Color.Navy, Is.EqualTo(new Color(0xFF, 0x00, 0x00, 0x80)));
 
             Assert.That(Color.OldLace, Is.EqualTo(new Color(0xFF, 0xFD, 0xF5, 0xE6)));
-            Assert.That(Color.Olive,Is.EqualTo(new Color(0xFF, 0x80, 0x80, 0x00)));
+            Assert.That(Color.Olive, Is.EqualTo(new Color(0xFF, 0x80, 0x80, 0x00)));
             Assert.That(Color.OliveDrab, Is.EqualTo(new Color(0xFF, 0x6B, 0x8E, 0x23)));
             Assert.That(Color.Orange, Is.EqualTo(new Color(0xFF, 0xFF, 0xA5, 0x00)));
             Assert.That(Color.OrangeRed, Is.EqualTo(new Color(0xFF, 0xFF, 0x45, 0x00)));
