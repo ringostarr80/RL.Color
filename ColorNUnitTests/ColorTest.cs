@@ -23,10 +23,7 @@ namespace ColorNUnitTests
         [Test]
         public void TestInvalidColorString()
         {
-            Assert.Throws<System.InvalidCastException>(() =>
-            {
-                new Color("foo");
-            });
+            Assert.Throws<System.InvalidCastException>((System.Action)(() => { _ = new Color("foo"); }));
         }
 
         [Test]
