@@ -1,8 +1,6 @@
 name: .NET Build & Test
 
-permissions:
-  contents: read
-  pull-requests: write
+permissions: {}
 
 on:
   push:
@@ -10,8 +8,15 @@ on:
   pull_request:
     branches: [ "main" ]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
+    name: Build & Test
+    permissions:
+      contents: read # required by actions/checkout to fetch the repository
 
     runs-on: ubuntu-latest
 
@@ -20,7 +25,9 @@ jobs:
         dotnet: [ '8.0', '9.0', '10.0' ]
 
     steps:
-    - uses: actions/checkout@v5
+    - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      with:
+        persist-credentials: false
     - name: Setup .NET
       uses: actions/setup-dotnet@d4c94342e560b34958eacfc5d055d21461ed1c5d # v5
       with:
@@ -31,10 +38,14 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --framework=net${{ matrix.dotnet }} --no-restore
+      env:
+        DOTNET_VERSION: ${{ matrix.dotnet }}
+      run: dotnet build --framework="net${DOTNET_VERSION}" --no-restore
     - name: Test
+      env:
+        DOTNET_VERSION: ${{ matrix.dotnet }}
       run: |
-        dotnet test --framework=net${{ matrix.dotnet }} --no-build --verbosity normal --collect:"XPlat Code Coverage"
+        dotnet test --framework="net${DOTNET_VERSION}" --no-build --verbosity normal --collect:"XPlat Code Coverage"
     - name: Upload coverage reports to Codecov
       if: ${{ matrix.dotnet == '10.0' }}
       uses: codecov/codecov-action@5a1091511ad55cbe89839c7260b706298ca349f7 # v5.5.1
